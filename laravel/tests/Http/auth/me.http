@@ -1,0 +1,4 @@
+GET {{host}}/api/v1/auth/me
+Authorization: Bearer {{authorization}}
+
+###

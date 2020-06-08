@@ -1,0 +1,67 @@
+{
+  "name": "tools.devi.demo",
+  "version": "1.0.0",
+  "description": "",
+  "productName": "Devitools",
+  "cordovaId": "tools.devi.demo",
+  "capacitorId": "",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build -m pwa",
+    "fix": "eslint --fix src",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.8.2",
+    "@sentry/browser": "^5.6.1",
+    "@sentry/integrations": "^5.6.1",
+    "@vue/composition-api": "^0.5.0",
+    "axios": "^0.18.1",
+    "dayjs": "^1.8.14",
+    "file-saver": "^2.0.2",
+    "fingerprintjs2": "^2.1.0",
+    "intl-tel-input": "^17.0.0",
+    "localforage": "^1.7.3",
+    "named-regexp-groups": "^1.0.5",
+    "quasar": "^1.12.3",
+    "satoshi-bitcoin": "^1.0.4",
+    "uuid": "^3.3.2",
+    "vue-class-component": "^7.1.0",
+    "vue-i18n": "^8.0.0",
+    "vue-property-decorator": "^8.2.1",
+    "vuelidate": "^0.7.4"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.9.6",
+    "@types/node": "^10.17.15",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "dotenv-webpack": "^1.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.1.2",
+    "quasar-app-extension-qdecimal": "^1.0.0-beta.2",
+    "webpack-version-file-plugin": "^0.4.0"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ],
+  "resolutions": {
+    "@babel/parser": "7.7.5"
+  }
+}

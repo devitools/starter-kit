@@ -1,0 +1,19 @@
+{
+  "plugins": ["@babel/plugin-syntax-dynamic-import", "transform-class-properties"],
+  "env": {
+    "test": {
+      "plugins": ["dynamic-import-node"],
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "modules": "commonjs",
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

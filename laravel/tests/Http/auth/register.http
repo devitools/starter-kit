@@ -1,0 +1,7 @@
+POST {{host}}/api/v1/auth/register HTTP/1.1
+Cookie: XDEBUG_SESSION=XDEBUG_ECLIPSE
+Content-Type: application/json
+
+{
+    "username": "wil3"
+}

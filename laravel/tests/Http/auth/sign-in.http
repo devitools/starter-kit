@@ -1,0 +1,11 @@
+POST http://localhost:8080/api/v1/auth/sign-in
+Content-Type: application/json
+Device: test
+
+{
+  "username": "root",
+  "password": "aq1sw2de3"
+}
+> {% client.global.set('authorization', response.body.data.token) %}
+
+###

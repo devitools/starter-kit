@@ -1,0 +1,18 @@
+###> symfony/framework-bundle ###
+/symfony/.env.local
+/symfony/.env.local.php
+/symfony/.env.*.local
+/symfony/public/bundles/
+/symfony/var/*
+/symfony/vendor/
+###< symfony/framework-bundle ###
+
+.idea/
+/.bin/
+/docker-compose.override.yml
+/coverage
+
+!*.gitkeep
+*.log
+nbproject
+/@ignored

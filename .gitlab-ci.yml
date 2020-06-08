@@ -1,0 +1,65 @@
+image: tevun/quasar:latest
+
+cache: &global_cache
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - quasar/node_modules/
+  policy: pull-push
+
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval "$(ssh-agent -s)"
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - echo "${DEPLOY_SERVER_PRIVATE_KEY}" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh-add ~/.ssh/id_rsa
+  - git config --global user.email "ci@devi.tools"
+  - git config --global user.name "CI"
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+master:
+  only:
+    - master
+  script:
+    # force master branch
+    - git checkout master
+    - git branch -vv
+    # remove previous git information
+    - rm -rf .git
+    - BUILD_DIR="$(pwd)"
+
+    # create dist project based on laravel
+    - mv "${BUILD_DIR}/laravel" "${BUILD_DIR}/dist"
+    - cat "${MASTER_DEPLOY_ENV}" > "${BUILD_DIR}/dist/.env"
+    - cp ".environment/demo.devi.tools/docker-compose.yml" "${BUILD_DIR}/dist/docker-compose.yml"
+
+    # build quasar app
+    - cd "${BUILD_DIR}/quasar"
+    - npm install
+    - export BUILD_ENV="production"
+    - quasar build -m pwa
+    - cp -r "${BUILD_DIR}"/quasar/dist/pwa/* "${BUILD_DIR}/dist/public"
+
+    # get infra stuffs
+    - cp -r "${BUILD_DIR}/laravel/.docker" "${BUILD_DIR}/dist/.docker"
+    - cp -r "${BUILD_DIR}/.tevun" "${BUILD_DIR}/dist/.tevun"
+
+    # go to dist project, create a new git repository and add all files
+    - cd ${BUILD_DIR}/dist
+    - git init
+    - git add -f docker-compose.yml # force add special files
+    - git add -f .env # force add special files
+    - git add .
+    - git commit --quiet -m "[deploy] $(date)"
+
+    # setup and execute deploy
+    - echo "Add host ${MASTER_DEPLOY_HOST}"
+    - echo "${MASTER_DEPLOY_HOST}" > ~/.ssh/known_hosts
+    - echo "chmod on ~/.ssh/known_hosts"
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "Deploy 'master' (${MASTER_DEPLOY_REMOTE})"
+    - git remote add production ${MASTER_DEPLOY_REMOTE}
+    - git push production master --force

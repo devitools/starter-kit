@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_1"
+   sodipodi:docname="devitools-square.svg"
+   xml:space="preserve"
+   viewBox="0 0 240 240"
+   version="1.1"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="240"
+   height="240"
+   inkscape:export-filename="C:\Users\William\Work\Projects\Dracones\devi.tools\laravel-quasar-starter-kit\quasar\src\statics\icons\apple-touch-icon.png"
+   inkscape:export-xdpi="72"
+   inkscape:export-ydpi="72"><defs
+   id="defs13" /><sodipodi:namedview
+   id="namedview3059"
+   fit-margin-left="0"
+   inkscape:zoom="2.36"
+   borderopacity="1"
+   inkscape:current-layer="Layer_1"
+   inkscape:cx="122.79753"
+   inkscape:cy="94.960199"
+   inkscape:window-maximized="0"
+   showgrid="false"
+   fit-margin-right="0"
+   bordercolor="#666666"
+   inkscape:window-x="-7"
+   guidetolerance="10"
+   objecttolerance="10"
+   inkscape:window-y="0"
+   fit-margin-bottom="0"
+   inkscape:window-width="1380"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   pagecolor="#ffffff"
+   gridtolerance="10"
+   inkscape:window-height="1008"
+   fit-margin-top="0"
+   inkscape:snap-text-baseline="false" />
+<g
+   id="g3721"
+   transform="matrix(3.5216058,0,0,3.5216058,5.4416559,1.0253274)"
+   style="fill:#333333;fill-opacity:1"
+   inkscape:export-filename="C:\Users\William\Work\Projects\Dracones\market-place\quasar\src\statics\github.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"><path
+     style="fill:#333333;fill-opacity:1;stroke-width:0.76740324"
+     d="m 3.0033157,29.022371 c -0.843281,-0.920352 -1.406269,-2.758113 -1.406269,-4.368239 0,-1.609144 0.42194,-3.102509 1.476492,-3.907082 h -0.07022 C 7.9951797,15.919617 14.9563,9.4830377 19.597047,5 v 10.690019 c -1.82821,1.723943 -4.28903,3.678466 -10.4764923,9.080874 l 0.07022,0.113818 c 3.3047023,2.414698 7.1015673,6.092182 10.4062693,9.310471 V 45 Z"
+     inkscape:connector-curvature="0"
+     id="path3051" /><path
+     style="fill:#333333;fill-opacity:1;stroke-width:0.76741266"
+     d="m 61.974737,20.97704 c 0.842681,0.920375 1.406269,2.759162 1.406269,4.368346 0,1.609184 -0.421941,3.102585 -1.477092,3.907178 h 0.07082 C 56.982873,34.080116 50.021153,40.516852 45.381006,45 V 34.309719 c 1.828209,-1.723004 4.28903,-3.677574 10.476492,-9.080116 l -0.07022,-0.11382 c -3.304105,-2.414757 -7.10157,-6.092332 -10.406272,-9.3107 V 5 Z"
+     inkscape:connector-curvature="0"
+     id="path3053" /><path
+     d="m 28.618411,47.116275 h -7.011 l 14.09,-43.6880003 h 7.13 z"
+     inkscape:connector-curvature="0"
+     id="path3055"
+     style="fill:#333333;fill-opacity:1" /></g><path
+   id="path3045"
+   style="display:none"
+   inkscape:connector-curvature="0"
+   display="none"
+   d="m 67.170444,193.58287 c -0.191,-0.192 -0.502,-0.192 -0.695,0 l -56.8380003,56.764 c -0.192,0.191 -0.192,0.501 0,0.692 l 19.2070003,19.184 c 0.096,0.095 0.222,0.143 0.348,0.143 0.125,0 0.251,-0.048 0.347,-0.143 l 56.839,-56.765 c 0.093,-0.092 0.145,-0.216 0.145,-0.347 0,-0.131 -0.052,-0.255 -0.145,-0.347 z" />
+<path
+   id="path3047"
+   style="display:none"
+   inkscape:connector-curvature="0"
+   display="none"
+   d="m 94.844444,191.43787 -6.319,-6.311 c -1.814,-1.811 -4.226,-2.809 -6.792,-2.809 -2.564,0 -4.977,0.998 -6.79,2.809 l -6.319,6.311 c -0.093,0.092 -0.145,0.216 -0.145,0.347 0,0.13 0.052,0.254 0.145,0.346 l 19.207,19.182 c 0.092,0.092 0.218,0.144 0.348,0.144 0.131,0 0.255,-0.052 0.346,-0.144 l 6.319,-6.311 c 1.814,-1.812 2.813,-4.22 2.813,-6.783 0,-2.561 -0.999,-4.969 -2.813,-6.781 z" />
+<path
+   id="path3049"
+   style="display:none"
+   inkscape:connector-curvature="0"
+   display="none"
+   d="m 8.3564437,252.28487 c -0.122,-0.121 -0.296,-0.172 -0.464,-0.129 -0.167,0.04 -0.3,0.165 -0.351,0.33 l -9.18,29.195 c -0.055,0.178 -0.01,0.369 0.127,0.498 0.094,0.091 0.217,0.139 0.342,0.139 0.054,0 0.11,-0.011 0.164,-0.029 l 28.3870003,-10.012 c 0.159,-0.056 0.278,-0.188 0.315,-0.354 0.037,-0.164 -0.012,-0.337 -0.132,-0.455 z" />
+
+
+
+<text
+   id="text3057"
+   y="-1245.0923"
+   x="-2382.5542"
+   font-size="177.33"
+   style="font-size:179.25415039px;line-height:0%;font-family:Courier-Bold;stroke-width:1.01085067;fill:#333333;">&lt;/&gt;</text>
+
+
+
+<metadata
+   id="metadata10"><rdf:RDF><cc:Work><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><cc:license
+         rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" /><dc:publisher><cc:Agent
+           rdf:about="http://openclipart.org/"><dc:title>Openclipart</dc:title></cc:Agent></dc:publisher><dc:title></dc:title></cc:Work><cc:License
+       rdf:about="http://creativecommons.org/publicdomain/zero/1.0/"><cc:permits
+         rdf:resource="http://creativecommons.org/ns#Reproduction" /><cc:permits
+         rdf:resource="http://creativecommons.org/ns#Distribution" /><cc:permits
+         rdf:resource="http://creativecommons.org/ns#DerivativeWorks" /></cc:License></rdf:RDF></metadata><text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:50.43455505px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1.89129519;"
+   x="8.9919138"
+   y="238.57759"
+   id="text3725"
+   transform="scale(1.0801233,0.92582022)"><tspan
+     sodipodi:role="line"
+     x="8.9919138"
+     y="238.57759"
+     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:50.43455505px;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke-width:1.89129519;"
+     id="tspan3735">devi</tspan></text>
+
+
+<text
+   xml:space="preserve"
+   style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:47.06087875px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Italic Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none;stroke-width:1.76478267;"
+   x="123.36391"
+   y="244.88272"
+   id="text3741"
+   transform="scale(1.1128781,0.89857102)"><tspan
+     sodipodi:role="line"
+     id="tspan3739"
+     x="123.36391"
+     y="244.88272"
+     style="fill:#333333;fill-opacity:1;stroke-width:1.76478267;">tools</tspan></text>
+
+
+</svg>

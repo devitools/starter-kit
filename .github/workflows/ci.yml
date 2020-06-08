@@ -1,0 +1,77 @@
+name: deploy
+
+on: push
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        node-version: [10.x] # Only run the 10.x build
+
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git checkout master
+      - run: git config --global user.email "ci@devi.tools"
+      - run: git config --global user.name "CI"
+      - run: git submodule sync --recursive
+      - run: git submodule update --init --recursive
+
+      # create dist project based on laravel
+      - run: mv laravel artifacts
+      - run: echo "${{ secrets.MASTER_DEPLOY_ENV }}" | tr -d '\r' > artifacts/.env
+      - run: cp .environment/demo.devi.tools/docker-compose.yml artifacts/docker-compose.yml
+
+      # build quasar app
+      - run: export BUILD_ENV="production"
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install -g yarn
+      - name: Run yarn install, build
+        run: |
+          cd quasar
+          yarn
+          yarn build
+      - run: cp -r quasar/dist/pwa/* artifacts/public
+
+      # get infra stuffs
+      - run: cp -r .tevun artifacts/.tevun
+
+      # go to artifacts project, create a new git repository and add all files
+      - name: Configure repo
+        run: |
+          rm -rf .git
+          cd artifacts
+          git init
+          git add -f docker-compose.yml # force add special files
+          git add -f .env # force add special files
+          git add .
+          git commit --quiet -m "[deploy] $(date)"
+
+      # configure ssh
+      - name: Configure SSH
+        run: |
+          rm -rf .git
+          cd artifacts
+          eval $(ssh-agent -s)
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo -e "${{ secrets.DEPLOY_SERVER_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-add ~/.ssh/id_rsa
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+      # setup and execute deploy
+      - name: Run push to sever
+        run: |
+          cd artifacts
+          echo "Add host ${{ secrets.MASTER_DEPLOY_HOST }}"
+          echo -e "${{ secrets.MASTER_DEPLOY_HOST }}" > ~/.ssh/known_hosts
+          echo "chmod on ~/.ssh/known_hosts"
+          chmod 644 ~/.ssh/known_hosts
+          echo "Deploy 'master' (${{ secrets.MASTER_DEPLOY_REMOTE }})"
+          git remote add production ${{ secrets.MASTER_DEPLOY_REMOTE }}
+          git push production master --force
