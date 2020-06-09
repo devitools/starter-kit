@@ -178,9 +178,9 @@ module.exports = configure(function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Quasar App',
-        short_name: 'Quasar App',
-        description: 'A Quasar Framework app',
+        name: 'Devitools Demo',
+        short_name: 'Devitools Demo - RAD tools to web development',
+        description: 'Devitools is a set of RAD tools to web development. Make more, make easy',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
