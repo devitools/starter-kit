@@ -17,7 +17,7 @@ register(process.env.SERVICE_WORKER_FILE, {
   ready () {
     // console.log('App is being served from cache by a service worker.')
 
-    Notify.create({ message: $lang('worker.ready.message') })
+    // Notify.create({ message: $lang('worker.ready.message') })
   },
 
   registered (registration) {

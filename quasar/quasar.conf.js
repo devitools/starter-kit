@@ -180,7 +180,7 @@ module.exports = configure(function (ctx) {
       manifest: {
         name: 'Devitools Demo',
         short_name: 'Devitools Demo - RAD tools to web development',
-        description: 'Devitools is a set of RAD tools to web development. Make more, make easy',
+        description: 'Devitools is a set of RAD tools to web development. Make fast, make easy, make more',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

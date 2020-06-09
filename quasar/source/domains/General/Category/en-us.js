@@ -32,6 +32,9 @@ export default {
   },
   fields: {
     // [primaryKey]: 'Id',
-    name: 'Name'
+    name: {
+      label: 'Name',
+      placeholder: 'Type a good name to your category'
+    }
   }
 }

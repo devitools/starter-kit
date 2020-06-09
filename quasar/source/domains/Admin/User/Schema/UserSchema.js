@@ -3,9 +3,8 @@ import Schema from '@devitools/Agnostic/Schema'
 import Service from 'source/domains/Admin/User/Schema/UserService'
 import { domain } from 'source/domains/Admin/User/settings'
 
-import { OPERATORS, SCOPES } from '@devitools/Agnostic/enum'
+import { SCOPES } from '@devitools/Agnostic/enum'
 import ProfileSchema from 'source/domains/Admin/Profile/Schema/ProfileSchema'
-import { withSeparator } from '@devitools/Util/general'
 
 /**
  * @class {UserSchema}
@@ -24,8 +23,6 @@ export default class UserSchema extends Schema {
   /**
    */
   construct () {
-    const profileOptions = { query: { reference: withSeparator('regular', OPERATORS.NOT_EQUAL) } }
-
     this.addField('name')
       .fieldTableShow()
       .fieldTableWhere()
@@ -47,7 +44,7 @@ export default class UserSchema extends Schema {
     this.addField('profile')
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsSelectRemote(ProfileSchema.build().provideRemote(profileOptions))
+      .fieldIsSelectRemote(ProfileSchema.build().provideRemote())
       .fieldFormWidth(100)
       .validationRequired()
 
@@ -78,21 +75,5 @@ export default class UserSchema extends Schema {
         }
         return field
       })
-  }
-
-  /**
-   * @param {boolean} isElevated
-   * @param {boolean} isAdmin
-   * @return {*}
-   */
-  provideRemoteWithQuery (isElevated, isAdmin) {
-    let options
-    if (isElevated) {
-      options = { query: { 'profile.reference': withSeparator('regular', OPERATORS.EQUAL) } }
-      if (isAdmin) {
-        options.query = { 'profile.reference': withSeparator('agent,regular', OPERATORS.IN) }
-      }
-    }
-    return this.provideRemote(options)
   }
 }

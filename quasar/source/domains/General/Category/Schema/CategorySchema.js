@@ -24,7 +24,6 @@ export default class CategorySchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsInputPlan()
-      .fieldFormDefaultValue('William')
       .validationRequired()
   }
 }
