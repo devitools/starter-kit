@@ -1,3 +1,10 @@
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/devitools/laravel-quasar-starter-kit/master/cover.jpg"
+    alt="cover"
+  />
+</p>
+
 # Devitools "Laravel-Quasar" Starter Kit
 
 ## Get Started
