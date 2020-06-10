@@ -2,4 +2,4 @@
 export const layout = () => import('source/modules/Auth/AuthLayout.vue')
 
 // default page of auth
-export const index = () => import('app/resources/views/auth/AuthSignIn.vue')
+export const index = () => import('resources/views/auth/AuthSignIn.vue')
