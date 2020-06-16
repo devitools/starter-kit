@@ -9,6 +9,12 @@
 
 ## Get Started
 
+Init submodules
+```
+git submodule init
+git submodule update
+```
+
 ### Start backend
 
 Open the terminal on `laravel` dir and run the command below
