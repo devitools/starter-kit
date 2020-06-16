@@ -4,7 +4,8 @@ import { $store } from 'src/store'
  * @type {string[]}
  */
 export const whitelistPaths = [
-  '/'
+  '/',
+  '/register'
 ]
 
 /**

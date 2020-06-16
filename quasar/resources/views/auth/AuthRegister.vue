@@ -1,37 +1,51 @@
 <template>
   <div
-    class="AuthIndex flex row"
+    class="AuthRegister flex row"
     :class="{ started }"
     @dblclick="started = !started"
   >
-    <div class="AuthIndex__left shadow-3 col-xs-12 col-sm-12 col-md-5 col-lg-4">
-      <div class="AuthIndex__left__header">
+    <div class="AuthRegister__left shadow-3 col-xs-12 col-sm-12 col-md-5 col-lg-4">
+      <div class="AuthRegister__left__header">
         <img
           alt="logo"
-          class="AuthIndex__logo"
+          class="AuthRegister__logo"
           :src="$static('/logo-horizontal.png')"
         >
       </div>
 
       <form
-        class="AuthIndex__left__form"
+      class="AuthRegister__left__form"
         @submit.prevent="attempt"
       >
         <div class="row">
           <div class="col-12 q-pa-sm">
             <QInput
-              :label="$lang('auth.signIn.username')"
+              :label="$lang('auth.register.name')"
               outlined
               v-model="record.username"
             >
+
               <template v-slot:prepend>
                 <QIcon name="person" />
               </template>
             </QInput>
           </div>
+          <div class="col-12 q-pa-sm">
+            <QInput
+              :label="$lang('auth.register.username')"
+              outlined
+              v-model="record.username"
+            >
+
+              <template v-slot:prepend>
+                <QIcon name="email" />
+              </template>
+            </QInput>
+          </div>
+
           <div class="col-12 q-pa-sm q-pb-md">
             <QInput
-              :label="$lang('auth.signIn.password')"
+              :label="$lang('auth.register.password')"
               :type="isPassword ? 'password' : 'text'"
               outlined
               v-model="record.password"
@@ -52,24 +66,15 @@
         <hr>
         <div class="q-pa-sm">
           <QBtn
-            class="AuthIndex__button full-width"
+            class="AuthRegister__button full-width"
             color="primary"
             size="lg"
-            :label="$lang('auth.signIn.button')"
+        :label="$lang('auth.register.createAccount')"
             type="submit"
             :loading="loading"
           />
         </div>
       </form>
-
-<q-btn
-  unelevated
-  :ripple="false"
-  class="AuthIndex__button"
-  text-color="light-blue-7"
-  to="/register"
- :label="$lang('auth.signIn.goToRegister')"
-/>
     </div>
   </div>
 </template>
@@ -186,7 +191,7 @@ export default {
 <style lang="stylus">
 @import '~src/css/quasar.variables.styl'
 
-.AuthIndex
+.AuthRegister
   height 100vh
   overflow-x hidden
   opacity 0.3
@@ -195,26 +200,26 @@ export default {
   &.started
     opacity 1
 
-  > .AuthIndex__left
+  > .AuthRegister__left
     padding 0 6vw
     background-color white
     min-width 320px
 
-    > .AuthIndex__left__header
+    > .AuthRegister__left__header
       margin 10vh 0 0 0
       padding 3vh 3vw
       display flex
       justify-content center
 
-    > .AuthIndex__left__form
+    > .AuthRegister__left__form
       margin 10vh 0 0 0
 
-    .AuthIndex__logo
+    .AuthRegister__logo
       max-height 100px
       max-width 100%
       user-select none
 
-  .AuthIndex__button
+  .AuthRegister__button
     min-height 42px
 
 .q-field__label
