@@ -62,14 +62,14 @@
         </div>
       </form>
 
-<q-btn
-  unelevated
-  :ripple="false"
-  class="AuthIndex__button"
-  text-color="light-blue-7"
-  to="/register"
- :label="$lang('auth.signIn.goToRegister')"
-/>
+       <q-btn
+         unelevated
+         :ripple="false"
+         class="AuthIndex__button"
+         text-color="light-blue-7"
+         to="/register"
+        :label="$lang('auth.signIn.goToRegister')"
+        />
     </div>
   </div>
 </template>

@@ -69,7 +69,7 @@
             class="AuthRegister__button full-width"
             color="primary"
             size="lg"
-        :label="$lang('auth.register.createAccount')"
+            :label="$lang('auth.register.createAccount')"
             type="submit"
             :loading="loading"
           />
@@ -84,8 +84,6 @@ import { QBtn, QIcon, QInput } from 'quasar'
 import { required } from 'vuelidate/lib/validators'
 import AuthAttempt from 'source/modules/Auth/AuthAttempt'
 import { dashboard } from 'routes/dashboard'
-import { me } from 'source/domains/Auth/Service'
-
 export default {
   /**
    */
@@ -144,15 +142,10 @@ export default {
      */
     attemptError () {
       this.$q.loading.hide()
-      this.$message.error(this.$lang('auth.signIn.error'))
+      this.$message.error(this.$lang('auth.register.error'))
     },
     /**
      */
-    attemptFetchUser () {
-      me()
-        .then(this.openDashboard)
-        .catch(() => this.$q.loading.hide())
-    },
     /**
      */
     openDashboard () {
@@ -163,28 +156,9 @@ export default {
       this.$browse(target)
       window.setTimeout(() => this.$q.loading.hide(), 2000)
     }
-  },
+  }
   /**
    */
-  created () {
-    if (!this.$store.getters['app/getClipboard']) {
-      return
-    }
-
-    const credentials = this.$store.getters['app/getClipboard']
-    const setCredentials = () => {
-      if (credentials.username) {
-        this.record.username = credentials.username
-      }
-      if (credentials.password) {
-        this.record.password = credentials.password
-      }
-    }
-    this.$store.dispatch('app/clearClipboard').then(setCredentials)
-  },
-  mounted () {
-    window.setTimeout(() => { this.started = true }, 1000)
-  }
 }
 </script>
 
