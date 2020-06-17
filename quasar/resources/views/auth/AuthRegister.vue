@@ -85,8 +85,6 @@ import { required } from 'vuelidate/lib/validators'
 import AuthAttempt from 'source/modules/Auth/AuthAttempt'
 import { dashboard } from 'routes/dashboard'
 export default {
-  /**
-   */
   name: 'AuthSignIn',
   /**
    */
