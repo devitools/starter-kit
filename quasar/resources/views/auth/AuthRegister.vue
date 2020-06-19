@@ -129,9 +129,9 @@ export default {
     isPassword: true,
     isPasswordConfirm: true,
     record: {
-      name: 'William Correa', // process.env.VUE_APP_DEFAULT_NAME,
-      username: 'wilcorrea@gmail.com', // process.env.VUE_APP_DEFAULT_LOGIN,
-      password: 'aq1sw2de3', // process.env.VUE_APP_DEFAULT_PASSWORD,
+      name: 'XXX',
+      username: 'xxx@devi.tools', // process.env.VUE_APP_DEFAULT_LOGIN,
+      password: 'aq1sw2de3',
       confirmPassword: 'aq1sw2de3'
     }
   }),

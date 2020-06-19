@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             [
                 'profileId' => Uuid::fromString($adminProfileId)->getBytes(),
                 'name' => 'ADMIN',
-                'username' => 'root',
+                'username' => 'root@devi.tools',
                 'password' => 'aq1sw2de3',
             ]
         );
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             [
                 'profileId' => Uuid::fromString($playerProfileId)->getBytes(),
                 'name' => 'REGULAR',
-                'username' => 'user',
+                'username' => 'regular@devi.tools',
                 'password' => 'aq1sw2de3',
             ]
         );
