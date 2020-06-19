@@ -70,7 +70,8 @@ class User extends AbstractModel
             'required',
             'min:2',
             'max:255',
-            'regex:/(^([a-zA-Z]+)([_]+)?(\d+)?([a-zA-Z]+)?)$/u'
+            'email',
+            // 'regex:/(^([a-zA-Z]+)([_]+)?(\d+)?([a-zA-Z]+)?)$/u'
         ],
         'name' => [
             'required',

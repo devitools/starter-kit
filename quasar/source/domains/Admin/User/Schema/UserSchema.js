@@ -37,9 +37,12 @@ export default class UserSchema extends Schema {
       .fieldFormWidth(50)
       .validationRequired()
       .validationMinLength(2)
+      .validationEmail()
+      /*
       .validationAs('regex', function (value) {
         return (/(^([a-zA-Z]+)([_]+)?(\d+)?([a-zA-Z]+)?)$/g).test(value)
       })
+      */
 
     this.addField('profile')
       .fieldTableShow()

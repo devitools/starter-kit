@@ -1,10 +1,7 @@
-import $lang from '@devitools/Lang'
-import { action } from './@helper'
-
+import { action, actionGroup, actionMenu } from '@devitools/Security/actions'
 // domains/Admin
 import * as profile from 'resources/views/dashboard/admin/profile'
 import * as user from 'resources/views/dashboard/admin/user'
-
 // domains/General
 import * as category from 'resources/views/dashboard/general/category'
 
@@ -20,39 +17,19 @@ export default function (session) {
   const { permissions } = session
   if (!Array.isArray(permissions)) {
     return [
-      {
-        name: $lang('actions.home'),
-        path: '/dashboard/home',
-        icon: 'home',
-        separated: false
-      }
+      actionMenu('home', '/dashboard/home', 'home')
     ]
   }
 
   const actions = [
-    {
-      name: $lang('actions.home'),
-      path: '/dashboard/home',
-      icon: 'home',
-      separated: false
-    },
-    {
-      name: $lang('actions.general'),
-      icon: 'desktop_windows',
-      separated: false,
-      children: [
-        action(category, false)
-      ]
-    },
-    {
-      name: $lang('actions.admin'),
-      icon: 'settings',
-      separated: false,
-      children: [
-        action(user, true),
-        action(profile)
-      ]
-    }
+    actionMenu('home', '/dashboard/home', 'home'),
+    actionGroup('general', 'desktop_windows', [
+      action(category)
+    ]),
+    actionGroup('admin', 'settings', [
+      action(user, true),
+      action(profile)
+    ])
   ]
 
   const reduce = function (accumulator, action) {
