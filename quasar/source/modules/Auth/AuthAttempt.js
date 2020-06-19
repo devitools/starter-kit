@@ -63,6 +63,11 @@ export default {
      */
     setLoading (loading) {
       this.loading = !!loading
+      if (loading) {
+        this.$q.loading.show({ delay: 0 })
+        return
+      }
+      this.$q.loading.hide()
     },
     /**
      * @param {string} path

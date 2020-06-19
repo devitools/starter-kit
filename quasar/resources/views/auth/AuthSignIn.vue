@@ -2,7 +2,6 @@
   <div
     class="AuthIndex flex row"
     :class="{ started }"
-    @dblclick="started = !started"
   >
     <div class="AuthIndex__left shadow-3 col-xs-12 col-sm-12 col-md-5 col-lg-4">
       <div class="AuthIndex__left__header">
@@ -62,14 +61,14 @@
         </div>
       </form>
 
-       <q-btn
-         unelevated
-         :ripple="false"
-         class="AuthIndex__button"
-         text-color="light-blue-7"
-         to="/register"
+      <q-btn
+        unelevated
+        :ripple="false"
+        class="AuthIndex__button"
+        text-color="light-blue-7"
+        to="/register"
         :label="$lang('auth.signIn.goToRegister')"
-        />
+      />
     </div>
   </div>
 </template>
@@ -122,8 +121,13 @@ export default {
   methods: {
     /**
      */
+    attemptFail () {
+      this.$message.warning(this.$lang('auth.signIn.validation'))
+    },
+    /**
+     */
     attempting () {
-      this.$q.loading.show()
+      // noinspection JSCheckFunctionSignatures
       return this.$service.login(this.record.username, this.record.password)
     },
     /**
@@ -138,15 +142,15 @@ export default {
     /**
      */
     attemptError () {
-      this.$q.loading.hide()
       this.$message.error(this.$lang('auth.signIn.error'))
     },
     /**
      */
     attemptFetchUser () {
+      this.$q.loading.show({ delay: 0 })
       me()
         .then(this.openDashboard)
-        .catch(() => this.$q.loading.hide())
+        .finally(() => window.setTimeout(() => this.$q.loading.hide(), 2000))
     },
     /**
      */
@@ -156,7 +160,17 @@ export default {
         target = this.$route.query.current
       }
       this.$browse(target)
-      window.setTimeout(() => this.$q.loading.hide(), 2000)
+    },
+    /**
+     * @param {{username: string, password: string}} credentials
+     */
+    signInFromClipboard (credentials) {
+      if (!credentials.username || !credentials.password) {
+        return
+      }
+      this.record.username = credentials.username
+      this.record.password = credentials.password
+      this.attempt()
     }
   },
   /**
@@ -167,15 +181,10 @@ export default {
     }
 
     const credentials = this.$store.getters['app/getClipboard']
-    const setCredentials = () => {
-      if (credentials.username) {
-        this.record.username = credentials.username
-      }
-      if (credentials.password) {
-        this.record.password = credentials.password
-      }
-    }
-    this.$store.dispatch('app/clearClipboard').then(setCredentials)
+
+    this.$store
+      .dispatch('app/clearClipboard')
+      .then(() => this.signInFromClipboard(credentials))
   },
   mounted () {
     window.setTimeout(() => { this.started = true }, 1000)

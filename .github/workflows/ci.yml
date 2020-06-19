@@ -54,8 +54,6 @@ jobs:
       # configure ssh
       - name: Configure SSH
         run: |
-          rm -rf .git
-          cd artifacts
           eval $(ssh-agent -s)
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh

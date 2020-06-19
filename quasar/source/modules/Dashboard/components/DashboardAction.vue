@@ -3,7 +3,7 @@
     v-if="action.children && action.children.length"
     :key="action.uuid"
     :icon="action.icon"
-    :label="action.name"
+    :label="action.label"
     :value="expanded"
   >
     <template v-for="(kid, key) in action.children">
@@ -30,7 +30,7 @@
       <QIcon :name="action.icon" />
     </QItemSection>
     <QItemSection>
-      {{ action.name }}
+      {{ action.label }}
     </QItemSection>
     <QItemSection
       side

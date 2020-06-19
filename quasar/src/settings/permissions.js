@@ -1,12 +1,8 @@
-import $lang from '@devitools/Lang'
-
-import { permission } from './@helper'
+import { permission, permissionGroup } from '@devitools/Security/permissions'
 import { RULES } from './schema'
-
 // domains/Admin
 import * as profile from 'resources/views/dashboard/admin/profile'
 import * as user from 'resources/views/dashboard/admin/user'
-
 // domains/General
 import * as category from 'resources/views/dashboard/general/category'
 
@@ -14,30 +10,15 @@ import * as category from 'resources/views/dashboard/general/category'
  * @type {*}
  */
 export const permissions = [
-  {
-    label: $lang('permissions.all'),
-    namespace: 'all',
-    icon: 'ballot',
-    children: [
-      {
-        label: $lang('permissions.general'),
-        namespace: 'general',
-        icon: 'desktop_windows',
-        children: [
-          permission(category.domain, category.icon)
-        ]
-      },
-      {
-        label: $lang('permissions.admin'),
-        namespace: 'admin',
-        icon: 'settings',
-        children: [
-          permission(profile.domain, profile.icon),
-          permission(user.domain, user.icon)
-        ]
-      }
-    ]
-  }
+  permissionGroup('all', 'ballot', [
+    permissionGroup('general', 'desktop_windows', [
+      permission(category)
+    ]),
+    permissionGroup('admin', 'settings', [
+      permission(profile),
+      permission(user)
+    ])
+  ])
 ]
 
 /**
