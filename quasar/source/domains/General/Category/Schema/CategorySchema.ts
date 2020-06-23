@@ -24,12 +24,14 @@ export default class CategorySchema extends Schema {
    */
   construct ($component: Component) {
     // the magic happens
+
     this.addField('name')
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsInputPlan()
       .validationRequired()
-      .fieldOn('input', function (fieldEvent: FieldEvent) {
+      // use events as arrow function
+      .fieldOn('input', (fieldEvent: FieldEvent) => {
         const { $event } = fieldEvent
         $component.$getField('description').$setValue($event)
       })
@@ -45,6 +47,7 @@ export default class CategorySchema extends Schema {
       .fieldTableWhere()
       .fieldIsToggle()
       .fieldFormDefaultValue(true)
+      // use events with context bind
       .fieldWatch(function (this: Component, value: boolean) {
         this.$getField('description').$fieldFormHidden(!value)
       })
