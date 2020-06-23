@@ -27,6 +27,8 @@ class Category extends AbstractModel
      */
     protected $fillable = [
         'name',
+        'description',
+        'active',
     ];
 
     /**
@@ -34,6 +36,13 @@ class Category extends AbstractModel
      */
     protected $rules = [
         'name' => ['required'],
+    ];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'active' => 'boolean',
     ];
 
     /**

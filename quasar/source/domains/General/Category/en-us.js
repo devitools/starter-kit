@@ -39,6 +39,10 @@ export default {
     description: {
       label: 'Description',
       placeholder: ''
+    },
+    active: {
+      label: 'Active',
+      info: 'Toggle description field visibility'
     }
   }
 }

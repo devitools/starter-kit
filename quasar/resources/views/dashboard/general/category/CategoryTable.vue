@@ -1,9 +1,9 @@
 <template>
-  <SchemaTable v-bind="bind" />
+  <SchemaTableAsync v-bind="bind" />
 </template>
 
 <script type="text/javascript">
-import View from '@devitools/Agnostic/Adapters/View'
+import View, { table } from '@devitools/Agnostic/Adapters/Async'
 import Schema from 'source/domains/General/Category/Schema/CategorySchema'
 
 /**
@@ -17,7 +17,7 @@ export default {
   name: 'CategoryTable',
   /**
    */
-  schema: Schema
+  components: table(Schema)
 }
 </script>
 
