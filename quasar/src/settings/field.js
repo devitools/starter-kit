@@ -1,16 +1,62 @@
+import $lang from '@devitools/Lang'
+import components from 'src/settings/components'
+
+/**
+ * @type {string}
+ */
+export const component = 'input'
+
+/**
+ * @type {Timestamp[]}
+ */
+export const timestamps = [
+  { name: 'createdAt', type: 'datetime' },
+  { name: 'updatedAt', type: 'datetime' },
+  { name: 'deletedAt', type: 'datetime' },
+  { name: 'createdBy', type: 'user' },
+  { name: 'updatedBy', type: 'user' },
+  { name: 'deletedBy', type: 'user' }
+]
+
 /**
  * @param {string} $key
  * @param {Object} options
  * @param {Object} attrs
  * @param {Object} on
- * @returns {Object}
+ * @returns {Field}
  */
 export default ($key, options = {}, attrs = {}, on = {}) => {
+  let is = component
+  const properties = components[component]
+  if (properties) {
+    is = properties.is
+    on = { ...on, ...properties.listeners }
+    attrs = { ...attrs, ...(typeof properties?.attrs === 'function' ? properties.attrs() : properties.attrs) }
+  }
+
+  const { domain } = options
+  if (domain) {
+    let hint = $lang(`domains.${domain}.fields.${$key}.hint`)
+    const placeholder = $lang(`domains.${domain}.fields.${$key}.placeholder`)
+    let tooltip = $lang(`domains.${domain}.fields.${$key}.tooltip`)
+    let label = $lang(`domains.${domain}.fields.${$key}.info`)
+    if (!hint) {
+      hint = undefined
+    }
+    if (!tooltip) {
+      tooltip = undefined
+    }
+    if (!label) {
+      label = undefined
+    }
+    attrs = { ...attrs, label, hint, tooltip, placeholder }
+  }
+
   return {
-    is: '',
+    $key,
+    is,
     attrs,
     on,
-    $key,
     $type: options.type,
     $validations: {},
     $layout: {

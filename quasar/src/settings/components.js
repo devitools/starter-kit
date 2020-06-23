@@ -69,7 +69,7 @@ export const attrs = { dense: true, clearable: true, outlined: true, uppercase: 
 export const parseOutputUpperCase = (value) => typeof value === 'string' ? value.toUpperCase() : value
 
 /**
- * @type {Object}
+ * @type {Record<string, unknown>}
  */
 export default {
   input: {

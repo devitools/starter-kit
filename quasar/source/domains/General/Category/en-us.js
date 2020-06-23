@@ -35,6 +35,14 @@ export default {
     name: {
       label: 'Name',
       placeholder: 'Type a good name to your category'
+    },
+    description: {
+      label: 'Description',
+      placeholder: ''
+    },
+    active: {
+      label: 'Active',
+      info: 'Toggle description field visibility'
     }
   }
 }
