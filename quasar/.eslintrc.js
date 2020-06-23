@@ -28,6 +28,7 @@ module.exports = {
   extends: [
     // Base ESLint recommended rules
     // 'eslint:recommended',
+    'standard',
 
     // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#usage
     // ESLint typescript rules
@@ -42,9 +43,6 @@ module.exports = {
     // 'plugin:vue/essential', // Priority A: Essential (Error Prevention)
     'plugin:vue/strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
     // 'plugin:vue/recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
-
-    'standard'
-
   ],
 
   plugins: [
@@ -86,6 +84,7 @@ module.exports = {
     'no-prototype-builtins': 'off',
     'no-void': 'off',
     'dot-notation': 'off',
+    'keyword-spacing': 'off',
 
     // TypeScript
     'quotes': ['warn', 'single'],
@@ -98,6 +97,9 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/parser': 'off',
+    '@typescript-eslint/member-delimiter-style': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
