@@ -1,15 +1,15 @@
 // domains/Admin
-import profile from 'source/domains/Admin/Profile/en-us'
-import user from 'source/domains/Admin/User/en-us'
+import profile from 'source/domains/Admin/Profile/pt-br'
+import user from 'source/domains/Admin/User/pt-br'
 
 // domains/General
-import category from 'source/domains/General/Category/en-us'
+import category from 'source/domains/General/Category/pt-br'
 
 // domains/Home
-import settingsAccount from 'source/domains/Settings/Account/en-us'
+import settingsAccount from 'source/domains/Settings/Account/pt-br'
 
 // domains/Report
-import report from 'source/domains/Report/en-us'
+import report from 'source/domains/Report/pt-br'
 
 /**
  */

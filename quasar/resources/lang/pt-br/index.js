@@ -1,10 +1,10 @@
-import { agnostic, auth, geo, validation, worker } from '@devitools/Lang/en-us'
+import { agnostic, auth, geo, validation, worker } from '@devitools/Lang/pt-br'
 
-import actions from 'resources/lang/en-us/actions'
-import app from 'resources/lang/en-us/app'
-import domains from 'resources/lang/en-us/domains'
-import pages from 'resources/lang/en-us/pages'
-import permissions from 'resources/lang/en-us/permissions'
+import actions from 'resources/lang/pt-br/actions'
+import app from 'resources/lang/pt-br/app'
+import domains from 'resources/lang/pt-br/domains'
+import pages from 'resources/lang/pt-br/pages'
+import permissions from 'resources/lang/pt-br/permissions'
 
 /**
  * put all messages together

@@ -5,7 +5,7 @@ import { SCOPES } from '@devitools/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Admin / Perfils'
+      crumb: 'Administração / Perfils'
     },
     [SCOPES.SCOPE_INDEX]: {
       title: 'Perfis'

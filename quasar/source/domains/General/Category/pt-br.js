@@ -5,7 +5,7 @@ import { SCOPES } from '@devitools/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'General / Categories'
+      crumb: 'Geral / Categorias'
     },
     [SCOPES.SCOPE_INDEX]: {
       title: 'Categorias'

@@ -4,8 +4,8 @@
 export default {
   home: 'Início',
   general: 'Geral',
-  'geral.categoria': 'Categorias',
-  admin: 'Admin',
+  'general.category': 'Categorias',
+  admin: 'Administração',
   'admin.user': 'Usuarios',
   'admin.profile': 'Perfis'
 }
