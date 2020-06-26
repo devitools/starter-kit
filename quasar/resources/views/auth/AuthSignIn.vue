@@ -22,6 +22,8 @@
               :label="$lang('auth.signIn.username')"
               outlined
               v-model="record.username"
+              :error="$v.record.username.$error"
+              :error-message="$lang('validation.required')"
             >
               <template v-slot:prepend>
                 <QIcon name="person" />
@@ -34,6 +36,8 @@
               :type="isPassword ? 'password' : 'text'"
               outlined
               v-model="record.password"
+              :error="$v.record.password.$error"
+              :error-message="$lang('validation.password')"
             >
               <template v-slot:prepend>
                 <QIcon :name="record.password ? 'vpn_key' : 'lock'" />
