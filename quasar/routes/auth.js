@@ -10,11 +10,11 @@ export default ($router) => {
     group.route('/register', register, { name: 'register' })
   })
 
-  // check user is logged in app
-  $router.beforeThis(otherwise, checkIsAlreadyConnected)
-
   // init the store user
   $router.beforeEach(checkSession)
+
+  // check user is logged in app
+  $router.beforeThis(otherwise, checkIsAlreadyConnected)
 
   // check the permission to route
   $router.beforeEach(checkPermission)
