@@ -1,4 +1,4 @@
-import { bootstrap, checkIsLogged, checkPermission } from 'source/modules/Auth/router/middleware'
+import { checkSession, checkIsAlreadyConnected, checkPermission } from 'source/modules/Auth/router/middleware'
 import { otherwise } from 'src/router'
 import { signIn, register, layout } from 'source/modules/Auth/components'
 /**
@@ -9,10 +9,13 @@ export default ($router) => {
     group.route('', signIn, { name: 'sign-in' })
     group.route('/register', register, { name: 'register' })
   })
-  // init the store user
-  $router.beforeEach(bootstrap)
+
   // check user is logged in app
-  $router.beforeThis(otherwise, checkIsLogged)
+  $router.beforeThis(otherwise, checkIsAlreadyConnected)
+
+  // init the store user
+  $router.beforeEach(checkSession)
+
   // check the permission to route
   $router.beforeEach(checkPermission)
 }

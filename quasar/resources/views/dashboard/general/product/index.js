@@ -8,7 +8,7 @@ export const path = '/dashboard/general/product'
 /**
  * @type {string}
  */
-export const icon = 'local_offer'
+export const icon = 'extension'
 
 /**
  * @type {function}

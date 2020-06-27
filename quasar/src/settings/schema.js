@@ -16,6 +16,9 @@ export const searchKey = 'where'
 /** @type {string} */
 export const SEPARATION_OPERATOR = '~.~'
 
+/** @type {boolean} */
+export const SHOW_PLACEHOLDER_CONTENT = true
+
 /**
  * @param {Object} value
  * @return {string}
