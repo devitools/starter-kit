@@ -5,6 +5,7 @@ import * as profile from 'resources/views/dashboard/admin/profile'
 import * as user from 'resources/views/dashboard/admin/user'
 // domains/General
 import * as category from 'resources/views/dashboard/general/category'
+import * as product from 'resources/views/dashboard/general/product'
 
 /**
  * @type {*}
@@ -12,7 +13,8 @@ import * as category from 'resources/views/dashboard/general/category'
 export const permissions = [
   permissionGroup('all', 'ballot', [
     permissionGroup('general', 'desktop_windows', [
-      permission(category)
+      permission(category),
+      permission(product)
     ]),
     permissionGroup('admin', 'settings', [
       permission(profile),

@@ -10,19 +10,19 @@ export default {
     title: 'Login | Devitools'
   },
   '/dashboard': {
-    crumb: 'Home'
+    crumb: 'Início'
   },
   '/dashboard/home': {
-    title: 'Welcome to Devitools'
+    title: 'Bem vindo ao Devitools'
   },
   dashboard: {
     index: {
-      version: 'Version',
+      version: 'Versão',
       transactionCard: {
-        title: 'Transactions',
-        subtitle: 'Manage your transactions',
-        actionNew: 'Create a new Transaction',
-        actionAll: 'My Transactions'
+        title: 'Transações',
+        subtitle: 'Gerenciar transações',
+        actionNew: 'Criar uma nova transação',
+        actionAll: 'Minhas transações'
       }
     }
   }

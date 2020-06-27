@@ -1,4 +1,4 @@
-import { app } from '@devitools/Lang/en-us'
+import { app } from '@devitools/Lang/pt-br'
 
 /**
  * @type {Object}

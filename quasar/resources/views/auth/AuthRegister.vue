@@ -23,6 +23,7 @@
               outlined
               v-model="record.name"
               :error="$v.record.name.$error"
+              :error-message="$lang('validation.required')"
             >
               <template v-slot:prepend>
                 <QIcon name="person" />
@@ -35,6 +36,7 @@
               outlined
               v-model="record.username"
               :error="$v.record.username.$error"
+              :error-message="$lang('validation.email')"
             >
               <template v-slot:prepend>
                 <QIcon name="email" />
@@ -49,6 +51,7 @@
               outlined
               v-model="record.password"
               :error="$v.record.password.$error"
+              :error-message="$lang('validation.password')"
             >
               <template v-slot:prepend>
                 <QIcon :name="record.password ? 'vpn_key' : 'lock'" />
@@ -70,6 +73,7 @@
               outlined
               v-model="record.confirmPassword"
               :error="$v.record.confirmPassword.$error"
+              :error-message="$lang('auth.register.confirmation')"
             >
               <template v-slot:prepend>
                 <QIcon :name="record.confirmPassword ? 'vpn_key' : 'lock'" />

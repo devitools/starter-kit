@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
 import View from '@devitools/Agnostic/Adapters/View'
-import Schema from 'source/domains/Admin/Profile/Schema/ProfileSchema'
+import Schema from 'source/domains/General/Product/Schema/ProductSchema'
 
 /**
  */
@@ -14,7 +14,7 @@ export default {
   extends: View,
   /**
    */
-  name: 'ProfileForm',
+  name: 'ProductForm',
   /**
    */
   schema: Schema

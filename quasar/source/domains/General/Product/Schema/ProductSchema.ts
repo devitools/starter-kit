@@ -1,22 +1,22 @@
 import Schema from '@devitools/Agnostic/Schema'
 import { Component, FieldEvent } from '@devitools/Agnostic/Helper/interfaces'
 
-import CategoryService from './CategoryService'
+import ProductService from './ProductService'
 import { domain } from '../settings'
 
 /**
- * @class {CategorySchema}
+ * @class {ProductSchema}
  */
-export default class CategorySchema extends Schema {
+export default class ProductSchema extends Schema {
   /**
    * @type {string}
    */
   static domain = domain
 
   /**
-   * @type {CategoryService}
+   * @type {ProductService}
    */
-  service = CategoryService
+  service = ProductService
 
   /**
    * @param {Component} $component
@@ -29,27 +29,11 @@ export default class CategorySchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldIsInputPlan()
-      .validationRequired()
+      .fieldIsInputPlan()
       // use events as arrow function
       .fieldOn('input', (fieldEvent: FieldEvent) => {
         const { $event } = fieldEvent
         $component.$getField('description').$setValue($event)
-      })
-
-    this.addField('description')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .fieldIsText()
-      .fieldFormDefaultValue('')
-
-    this.addField('active')
-      .fieldTableShow()
-      .fieldTableWhere()
-      .fieldIsToggle()
-      .fieldFormDefaultValue(true)
-      // use events with context bind
-      .fieldWatch(function (this: Component, value: boolean) {
-        this.$getField('description').$fieldFormHidden(!value)
       })
   }
 }

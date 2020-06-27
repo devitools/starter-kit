@@ -57,7 +57,7 @@ export default {
       tooltip: 'A senha deve ter letras, números, símbolos especiais com no mínimo seis caracteres'
     },
     confirmPassword: {
-      label: 'Confirmação a senha',
+      label: 'Confirmação de senha',
       placeholder: 'ex .: @ y5l3cGy (vazio será ignorado ao Editarar)',
       tooltip: 'Repita a senha para confirmar'
     }
