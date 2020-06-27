@@ -5,7 +5,9 @@ import { $store } from 'src/store'
  */
 export const whitelistPaths = [
   '/',
-  '/register'
+  '/register',
+  '/dashboard',
+  '/dashboard/home'
 ]
 
 /**

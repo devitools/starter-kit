@@ -73,7 +73,7 @@
               outlined
               v-model="record.confirmPassword"
               :error="$v.record.confirmPassword.$error"
-              :error-message="$lang('validation.password')"
+              :error-message="$lang('auth.register.confirmation')"
             >
               <template v-slot:prepend>
                 <QIcon :name="record.confirmPassword ? 'vpn_key' : 'lock'" />
