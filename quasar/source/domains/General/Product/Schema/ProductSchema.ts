@@ -1,5 +1,6 @@
 import Schema from '@devitools/Agnostic/Schema'
-import { Component, FieldEvent } from '@devitools/Agnostic/Helper/interfaces'
+import { SCOPES } from '@devitools/Agnostic/enum'
+import { Component } from '@devitools/Agnostic/Helper/interfaces'
 
 import ProductService from './ProductService'
 import { domain } from '../settings'
@@ -20,20 +21,15 @@ export default class ProductSchema extends Schema {
 
   /**
    * @param {Component} $component
+   * @param {Record<string, unknown>} dependencies
    * Call schema builder method
    */
-  construct ($component: Component) {
+  construct ($component?: Component, dependencies?: Record<string, unknown>): void {
     // the magic happens
 
     this.addField('name')
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsInputPlan()
-      .fieldIsInputPlan()
-      // use events as arrow function
-      .fieldOn('input', (fieldEvent: FieldEvent) => {
-        const { $event } = fieldEvent
-        $component.$getField('description').$setValue($event)
-      })
+      .fieldFormAutofocus()
   }
 }

@@ -107,6 +107,8 @@
 
 <script type="text/javascript">
 import { QBtn, QIcon, QInput } from 'quasar'
+// https://chancejs.com/index.html
+import chance from 'chance'
 import { required, sameAs } from 'vuelidate/lib/validators'
 import AuthAttempt from 'source/modules/Auth/AuthAttempt'
 import { dashboard } from 'routes/dashboard'
@@ -121,24 +123,23 @@ export default {
   ],
   /**
    */
-  components: {
-    QInput,
-    QIcon,
-    QBtn
-  },
+  components: { QInput, QIcon, QBtn },
   /**
    */
-  data: () => ({
-    started: false,
-    isPassword: true,
-    isPasswordConfirm: true,
-    record: {
-      name: 'XXX',
-      username: 'xxx@devi.tools', // process.env.VUE_APP_DEFAULT_LOGIN,
-      password: 'aq1sw2de3',
-      confirmPassword: 'aq1sw2de3'
+  data () {
+    const generator = chance.Chance()
+    return {
+      started: false,
+      isPassword: true,
+      isPasswordConfirm: true,
+      record: {
+        name: `${generator.name()} ${generator.last()}`,
+        username: generator.email(),
+        password: 'aq1sw2de3',
+        confirmPassword: 'aq1sw2de3'
+      }
     }
-  }),
+  },
   /**
    */
   validations () {

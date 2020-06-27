@@ -4,7 +4,9 @@ import { get } from '@devitools/Util/general'
  * @param {ContainerComponent} context
  * @return {number}
  */
-export const delayLoading = (context) => 250
+export const delayLoading = (context) => {
+  return 800
+}
 
 /**
  * @param {Object} parameters
