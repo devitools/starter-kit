@@ -20,11 +20,9 @@ export default class ProductSchema extends Schema {
   service = ProductService
 
   /**
-   * @param {Component} $component
-   * @param {Record<string, unknown>} dependencies
    * Call schema builder method
    */
-  construct ($component?: Component, dependencies?: Record<string, unknown>): void {
+  construct (): void {
     // the magic happens
 
     this.addField('name')
