@@ -47,7 +47,7 @@ export const checkSession = (to, from, next) => {
  * @param {Function} next
  */
 export function checkPermission (to, from, next) {
-  if (isAllowedPath(to.path)) {
+  if (isAllowedPath(to.path, [dashboard])) {
     next()
     return
   }
