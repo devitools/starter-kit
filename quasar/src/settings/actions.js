@@ -4,6 +4,7 @@ import * as profile from 'resources/views/dashboard/admin/profile'
 import * as user from 'resources/views/dashboard/admin/user'
 // domains/General
 import * as category from 'resources/views/dashboard/general/category'
+import * as product from 'resources/views/dashboard/general/product'
 
 /**
  * @param {Object|undefined} session
@@ -24,7 +25,8 @@ export default function (session) {
   const actions = [
     actionMenu('home', '/dashboard/home', 'home'),
     actionGroup('general', 'desktop_windows', [
-      action(category)
+      action(category),
+      action(product)
     ]),
     actionGroup('admin', 'settings', [
       action(user, true),

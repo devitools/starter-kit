@@ -39,5 +39,13 @@ export default {
   'general.category.add': add,
   'general.category.view': view,
   'general.category.edit': edit,
-  'general.category.destroy': destroy
+  'general.category.destroy': destroy,
+  'general.product': 'Product',
+  'general.product.action': action,
+  'general.product.index': index,
+  'general.product.trash': trash,
+  'general.product.add': add,
+  'general.product.view': view,
+  'general.product.edit': edit,
+  'general.product.destroy': destroy
 }
