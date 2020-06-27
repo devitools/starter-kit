@@ -24,6 +24,7 @@ export const checkSession = (to, from, next) => {
     return
   }
 
+  // user is not logged
   if (!isUserLogged()) {
     next(fallback(to))
     return
