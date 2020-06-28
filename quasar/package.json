@@ -26,7 +26,7 @@
     "intl-tel-input": "^17.0.0",
     "localforage": "^1.7.3",
     "named-regexp-groups": "^1.0.5",
-    "quasar": "^1.12.3",
+    "quasar": "^1.12.8",
     "satoshi-bitcoin": "^1.0.4",
     "uuid": "^8.1.0",
     "vue-class-component": "^7.1.0",
