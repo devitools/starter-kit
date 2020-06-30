@@ -17,28 +17,49 @@ const fallback = (to) => ({
  * @param {Route} from
  * @param {Function} next
  */
+export function checkIsAlreadyConnected (to, from, next) {
+  // if user is already not logged...
+  if (isUserLogged()) {
+    // ...got to dashboard
+    next(dashboard)
+    return
+  }
+  // go forward
+  next()
+}
+
+/**
+ * @param {Route} to
+ * @param {Route} from
+ * @param {Function} next
+ */
 export const checkSession = (to, from, next) => {
-  // public URL
+  // if it is a public path...
   if (isAllowedPath(to.path)) {
+    // ...go forward
     next()
     return
   }
 
-  // user is not logged
+  // if user is not logged...
   if (!isUserLogged()) {
+    // ...redirect to fallback page
     next(fallback(to))
     return
   }
 
-  // user is already loaded
+  // if user is already loaded...
   if (isUserLoaded()) {
+    // ...go forward
     next()
     return
   }
 
   // we need the user info
   me()
+    // if we get, go forward
     .then(() => next())
+    // else redirect to fallback path
     .catch(() => next(fallback(to)))
 }
 
@@ -48,28 +69,20 @@ export const checkSession = (to, from, next) => {
  * @param {Function} next
  */
 export function checkPermission (to, from, next) {
+  // if it is an allowed path...
   if (isAllowedPath(to.path, [dashboard])) {
+    // ...go forward
     next()
     return
   }
 
+  // if it is an allowed route...
   if (isAllowedRoute(to)) {
+    // ...go forward
     next()
     return
   }
 
+  // the route to is not allowed, redirect to fallback
   next(fallback(to))
-}
-
-/**
- * @param {Route} to
- * @param {Route} from
- * @param {Function} next
- */
-export function checkIsAlreadyConnected (to, from, next) {
-  if (isUserLogged()) {
-    next(dashboard)
-    return
-  }
-  next()
 }

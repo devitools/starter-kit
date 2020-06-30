@@ -1,19 +1,19 @@
 <template>
   <div
-    class="AuthRegister flex row"
+    class="AuthSignUp flex row"
     :class="{ 'started': started }"
   >
-    <div class="AuthRegister__left shadow-3 col-xs-12 col-sm-12 col-md-5 col-lg-4">
-      <div class="AuthRegister__left__header">
+    <div class="AuthSignUp__left shadow-3 col-xs-12 col-sm-12 col-md-5 col-lg-4">
+      <div class="AuthSignUp__left__header">
         <img
           alt="logo"
-          class="AuthRegister__logo"
+          class="AuthSignUp__logo"
           :src="$static('/logo-horizontal.png')"
         >
       </div>
 
       <form
-        class="AuthRegister__left__form"
+        class="AuthSignUp__left__form"
         @submit.prevent="attempt"
       >
         <div class="row">
@@ -92,7 +92,7 @@
         <hr>
         <div class="q-pa-sm">
           <QBtn
-            class="AuthRegister__button full-width"
+            class="AuthSignUp__button full-width"
             color="primary"
             size="lg"
             :label="$lang('auth.register.createAccount')"
@@ -115,7 +115,7 @@ import { dashboard } from 'routes/dashboard'
 import { otherwise } from 'src/router'
 
 export default {
-  name: 'AuthSignIn',
+  name: 'AuthSignUp',
   /**
    */
   mixins: [
@@ -202,7 +202,7 @@ export default {
 <style lang="stylus">
 @import '~src/css/quasar.variables.styl'
 
-.AuthRegister {
+.AuthSignUp {
   height 100vh
   overflow-x hidden
   opacity 0.3
@@ -212,12 +212,12 @@ export default {
     opacity 1
   }
 
-  > .AuthRegister__left {
+  > .AuthSignUp__left {
     padding 0 6vw
     background-color white
     min-width 320px
 
-    > .AuthRegister__left__header {
+    > .AuthSignUp__left__header {
       margin 10vh 0 0 0
       padding 3vh 3vw
       display flex
@@ -225,17 +225,17 @@ export default {
     }
   }
 
-  > .AuthRegister__left__form {
+  > .AuthSignUp__left__form {
     margin 10vh 0 0 0
   }
 
-  .AuthRegister__logo {
+  .AuthSignUp__logo {
     max-height 100px
     max-width 100%
     user-select none
   }
 
-  .AuthRegister__button {
+  .AuthSignUp__button {
     min-height 42px
   }
 }
