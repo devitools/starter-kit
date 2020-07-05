@@ -36,9 +36,9 @@ export default {
       tooltip: 'O nome usado para identificar o usuário',
       placeholder: 'ex: John Doe'
     },
-    Usuárioname: {
+    username: {
       label: 'Usuário',
-      tooltip: 'Especifique o nível de permissão do usuário',
+      tooltip: 'Nome de usuário utilizado para ter acesso',
       placeholder: 'ex.: john_doe'
     },
     profile: {

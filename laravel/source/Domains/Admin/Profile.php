@@ -4,23 +4,19 @@ declare(strict_types=1);
 
 namespace Source\Domains\Admin;
 
+use Devitools\Agnostic\Schema;
 use Devitools\Auth\ProfileInterface;
-use Devitools\Persistence\AbstractModel as Model;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Source\Domains\Admin\Permission\ProfileSaving;
-
-use function is_array;
 
 /**
  * Class Profile
  *
+ * @property mixed reference
+ * @property mixed permissions
  * @package Source\Domains\Admin
- * @property string reference
- * @property Collection permissions
- * @property string uuid
  */
-class Profile extends Model implements ProfileInterface
+class Profile extends Schema implements ProfileInterface
 {
     /**
      * @var string
@@ -33,60 +29,13 @@ class Profile extends Model implements ProfileInterface
     public const REFERENCE_REGULAR = 'regular';
 
     /**
-     * @var string
-     */
-    public const REFERENCE_AGENT = 'agent';
-
-    /**
-     * The table associated with the model.
+     * The resource associated with the schema.
      *
-     * @var string
+     * @return string
      */
-    protected $table = 'profiles';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'reference',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $rules = [
-        'name' => ['required'],
-        'reference' => ['required', 'in:admin,regular,agent'],
-    ];
-
-    protected $dispatchesEvents = [
-        'saving' => ProfileSaving::class,
-    ];
-
-    /**
-     * @return array
-     */
-    public function oneToMany(): array
+    public static function resource(): string
     {
-        return [
-            'permissions' => static function ($data) {
-                if (is_array($data)) {
-                    return ['namespace' => $data['namespace'] ?? null];
-                }
-                return ['namespace' => $data];
-            },
-        ];
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function permissions(): HasMany
-    {
-        return $this->hasMany(Permission::class, 'profileId', $this->primaryKey);
+        return 'profiles';
     }
 
     /**
@@ -111,5 +60,34 @@ class Profile extends Model implements ProfileInterface
     public function getPermissions(): Collection
     {
         return $this->permissions;
+    }
+
+
+    /**
+     * Build the schema fields and actions.
+     *
+     * @return void
+     */
+    public function construct(): void
+    {
+        $this->addField('name')
+            ->validationString()
+            ->validationMax(255)
+            ->validationRequired();
+
+        $this->addField('reference')
+            ->validationIn(['admin', 'regular'])
+            ->validationRequired();
+
+        $this->addField('permissions')
+            ->isTree(Permission::class, 'profileId',  static function ($data) {
+                if (is_array($data)) {
+                    return ['namespace' => $data['namespace'] ?? null];
+                }
+                return ['namespace' => $data];
+            })
+            ->validationRequired();
+
+        $this->addEvent('saving', ProfileSaving::class);
     }
 }

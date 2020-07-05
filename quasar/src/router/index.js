@@ -21,6 +21,11 @@ export let $router
 export const otherwise = '/'
 
 /**
+ * @type {string}
+ */
+export const forbidden = '/forbidden'
+
+/**
  * @returns {AppRouter}
  */
 export default function (/* { store, ssrContext } */) {
@@ -47,8 +52,9 @@ export default function (/* { store, ssrContext } */) {
   // inject router on dashboard module
   dashboardRouteFile($router)
 
+  $router.route(forbidden, () => import('resources/views/Error403.vue'), { name: '403', public: true })
   if (process.env.MODE !== 'ssr') {
-    $router.route('*', () => import('resources/views/Error404.vue'), { name: '404' })
+    $router.route('*', () => import('resources/views/Error404.vue'), { name: '404', public: true })
   }
 
   return $router

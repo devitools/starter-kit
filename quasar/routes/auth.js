@@ -6,15 +6,15 @@ import { signIn, register, layout } from 'source/modules/Auth/components'
  */
 export default ($router) => {
   $router.group(otherwise, layout, (group) => {
-    group.route('', signIn, { name: 'sign-in' })
-    group.route('/register', register, { name: 'register' })
+    group.route('', signIn, { name: 'sign-in', public: true })
+    group.route('/register', register, { name: 'register', public: true })
   })
-
-  // init the store user
-  $router.beforeEach(checkSession)
 
   // check user is logged in app
   $router.beforeThis(otherwise, checkIsAlreadyConnected)
+
+  // check the user session
+  $router.beforeEach(checkSession)
 
   // check the permission to route
   $router.beforeEach(checkPermission)

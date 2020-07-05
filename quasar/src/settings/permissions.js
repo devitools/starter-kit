@@ -3,18 +3,21 @@ import { RULES } from './schema'
 // domains/Admin
 import * as profile from 'resources/views/dashboard/admin/profile'
 import * as user from 'resources/views/dashboard/admin/user'
+
 // domains/General
 import * as category from 'resources/views/dashboard/general/category'
-import * as product from 'resources/views/dashboard/general/product'
+import * as marker from 'resources/views/dashboard/general/marker'
+import * as type from 'resources/views/dashboard/general/type'
 
 /**
  * @type {*}
  */
 export const permissions = [
   permissionGroup('all', 'ballot', [
-    permissionGroup('general', 'desktop_windows', [
+    permissionGroup('general', 'bookmarks', [
       permission(category),
-      permission(product)
+      permission(marker),
+      permission(type)
     ]),
     permissionGroup('admin', 'settings', [
       permission(profile),

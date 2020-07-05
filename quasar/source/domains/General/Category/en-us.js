@@ -5,36 +5,35 @@ import { SCOPES } from '@devitools/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'General / Categories'
+      crumb: 'Organizers / Folders'
     },
     [SCOPES.SCOPE_INDEX]: {
-      title: 'Categories'
+      title: 'Folders'
     },
     [SCOPES.SCOPE_TRASH]: {
-      title: 'Category Trash',
+      title: 'Folder Trash',
       crumb: 'Trash'
     },
     [SCOPES.SCOPE_ADD]: {
-      title: 'Create Category',
+      title: 'Create Folder',
       crumb: 'Create'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'View Category',
-      crumb: 'View'
+      title: 'View Folder',
+      crumb: 'See'
     },
     [SCOPES.SCOPE_EDIT]: {
-      title: 'Edit Category',
+      title: 'Edit Folder',
       crumb: 'Edit'
     }
   },
   print: {
-    title: 'Category Printing'
+    title: 'Folder Printing'
   },
   fields: {
-    // [primaryKey]: 'Id',
     name: {
       label: 'Name',
-      placeholder: 'Type a good name to your category'
+      placeholder: 'ex: personal, business'
     },
     description: {
       label: 'Description',
@@ -42,7 +41,7 @@ export default {
     },
     active: {
       label: 'Active',
-      info: 'Toggle description field visibility'
+      info: 'If unchecked, the folder will be archived and will not be displayed for selection'
     }
   }
 }

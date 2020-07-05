@@ -110,7 +110,7 @@ export function defaultActions (schema) {
       .actionScopes([SCOPES.SCOPE_INDEX])
       .actionLevels([RULES.LEVEL_EDIT])
       .actionPositions(readonly ? [] : ALL_TABLE_POSITIONS)
-      .actionColor('primary')
+      .actionColor('accent')
       .actionIcon('edit')
 
     schema.addAction('destroy')
@@ -286,7 +286,6 @@ export default (schema, id, order, scopes = [], positions = [], attrs = {}, clas
   const attributes = {
     label: '',
     color: 'white',
-    textColor: 'grey-10',
     tooltip: undefined,
     icon: undefined,
     disabled: false

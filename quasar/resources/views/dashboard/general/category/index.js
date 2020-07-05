@@ -8,7 +8,7 @@ export const path = '/dashboard/general/category'
 /**
  * @type {string}
  */
-export const icon = 'local_offer'
+export const icon = 'folder'
 
 /**
  * @type {function}
