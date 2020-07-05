@@ -24,6 +24,7 @@ export default class MarkerSchema extends Schema {
     // the magic happens
 
     this.addField('name')
+      .fieldIsInputPlan()
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormAutofocus()

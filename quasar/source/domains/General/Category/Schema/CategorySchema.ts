@@ -1,5 +1,5 @@
 import Schema from '@devitools/Agnostic/Schema'
-import { Component, FieldEvent } from '@devitools/Agnostic/Helper/interfaces'
+import { Component } from '@devitools/Agnostic/Helper/interfaces'
 
 import CategoryService from './CategoryService'
 import { domain } from '../settings'
@@ -26,30 +26,21 @@ export default class CategorySchema extends Schema {
     // the magic happens
 
     this.addField('name')
+      .fieldIsInputPlan()
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsInputPlan()
       .validationRequired()
-      // use events as arrow function
-      .fieldOn('input', (fieldEvent: FieldEvent) => {
-        const { $event } = fieldEvent
-        $component.$getField('description').$setValue($event)
-      })
 
     this.addField('description')
+      .fieldIsText()
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsText()
       .fieldFormDefaultValue('')
 
     this.addField('active')
+      .fieldIsToggle()
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsToggle()
       .fieldFormDefaultValue(true)
-      // use events with context bind
-      .fieldWatch(function (this: Component, value: boolean) {
-        this.$getField('description').$fieldFormHidden(!value)
-      })
   }
 }

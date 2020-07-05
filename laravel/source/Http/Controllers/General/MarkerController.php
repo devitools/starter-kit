@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Source\Http\Controllers\General;
 
 use Devitools\Http\Controllers\AbstractRestController;
-use Source\Domains\General\Product\ProductRepository;
+use Source\Domains\General\Marker\MarkerRepository;
 
 /**
- * Class ProductController
+ * Class MarkerController
  *
  * @package Source\Http\Controllers\General
  */
-class ProductController extends AbstractRestController
+class MarkerController extends AbstractRestController
 {
     /**
      * CategoryController constructor.
      *
-     * @param ProductRepository $repository
+     * @param MarkerRepository $repository
      */
-    public function __construct(ProductRepository $repository)
+    public function __construct(MarkerRepository $repository)
     {
         parent::__construct($repository);
     }

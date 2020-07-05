@@ -6,16 +6,16 @@ use Devitools\Database\Migration\TableCreate;
 use Devitools\Database\Table;
 
 /**
- * Class ProductsCreate
+ * Class TypesCreate
  */
-class ProductsCreate extends TableCreate
+class TypesCreate extends TableCreate
 {
     /**
      * @return string
      */
     protected function table(): string
     {
-        return 'products';
+        return 'types';
     }
 
     /**

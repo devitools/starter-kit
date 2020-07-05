@@ -5,36 +5,43 @@ import { SCOPES } from '@devitools/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'Geral / Categorias'
+      crumb: 'Organizadores / Pastas'
     },
     [SCOPES.SCOPE_INDEX]: {
-      title: 'Categorias'
+      title: 'Pastas'
     },
     [SCOPES.SCOPE_TRASH]: {
-      title: 'Categoria Lixeira',
+      title: 'Lixeira de Pastas',
       crumb: 'Lixeira'
     },
     [SCOPES.SCOPE_ADD]: {
-      title: 'Criar Categoria',
+      title: 'Criar Pasta',
       crumb: 'Criar'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'Ver Categoria',
+      title: 'Ver Pasta',
       crumb: 'Ver'
     },
     [SCOPES.SCOPE_EDIT]: {
-      title: 'Editar Categoria',
+      title: 'Editar Pasta',
       crumb: 'Editar'
     }
   },
   print: {
-    title: 'Impressão de categoria'
+    title: 'Impressão de Pasta'
   },
   fields: {
-    // [primaryKey]: 'Id',
     name: {
       label: 'Nome',
-      placeholder: 'Digite um bom nome para sua categoria'
+      placeholder: 'ex: pessoal, empresa'
+    },
+    description: {
+      label: 'Descrição',
+      placeholder: ''
+    },
+    active: {
+      label: 'Ativo',
+      info: 'Se desmarcado a pasta será arquivada e não será exibida para ser selecionada'
     }
   }
 }

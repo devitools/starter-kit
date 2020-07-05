@@ -3,7 +3,7 @@ export { domain } from 'source/domains/Wallet/Account/settings'
 /**
  * @type {string}
  */
-export const path = '/dashboard/wallet/type'
+export const path = '/dashboard/wallet/account'
 
 /**
  * @type {string}

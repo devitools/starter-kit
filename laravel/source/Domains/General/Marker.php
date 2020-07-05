@@ -7,11 +7,11 @@ namespace Source\Domains\General;
 use Devitools\Agnostic\Schema;
 
 /**
- * Class Category
+ * Class Marker
  *
  * @package Source\Domains\General
  */
-class Category extends Schema
+class Marker extends Schema
 {
     /**
      * The resource associated with the schema.
@@ -20,7 +20,7 @@ class Category extends Schema
      */
     public static function resource(): string
     {
-        return 'categories';
+        return 'markers';
     }
 
     /**
@@ -28,7 +28,7 @@ class Category extends Schema
      */
     public function domain(): string
     {
-        return 'general.category';
+        return 'general.marker';
     }
 
     /**
@@ -40,11 +40,5 @@ class Category extends Schema
     {
         $this->addField('name')
             ->validationRequired();
-
-        $this->addField('description')
-            ->isText();
-
-        $this->addField('active')
-            ->isToggle();
     }
 }

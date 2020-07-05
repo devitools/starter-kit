@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Source\Domains\General\Category;
 
-use Source\Domains\General\Category;
 use Devitools\Persistence\AbstractRepository;
+use Source\Domains\General\Category;
 
 /**
  * Class CategoryRepository

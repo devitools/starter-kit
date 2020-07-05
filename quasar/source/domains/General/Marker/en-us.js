@@ -5,36 +5,35 @@ import { SCOPES } from '@devitools/Agnostic/enum'
 export default {
   routes: {
     group: {
-      crumb: 'General / Products'
+      crumb: 'Organizers / Labels'
     },
     [SCOPES.SCOPE_INDEX]: {
-      title: 'Products'
+      title: 'Labels'
     },
     [SCOPES.SCOPE_TRASH]: {
-      title: 'Product Trash',
+      title: 'Trash Labels',
       crumb: 'Trash'
     },
     [SCOPES.SCOPE_ADD]: {
-      title: 'Create Product',
+      title: 'Create Label',
       crumb: 'Create'
     },
     [SCOPES.SCOPE_VIEW]: {
-      title: 'View Product',
+      title: 'View Label',
       crumb: 'View'
     },
     [SCOPES.SCOPE_EDIT]: {
-      title: 'Edit Product',
+      title: 'Edit Marker',
       crumb: 'Edit'
     }
   },
   print: {
-    title: 'Product Printing'
+    title: 'Print Marker'
   },
   fields: {
-    // [primaryKey]: 'Id',
     name: {
       label: 'Name',
-      placeholder: 'Name of your product'
+      placeholder: 'ex.: bakery, pharmacy'
     }
   }
 }
