@@ -82,7 +82,6 @@ import { QBtn, QIcon, QInput } from 'quasar'
 import { required } from 'vuelidate/lib/validators'
 import AuthAttempt from 'source/modules/Auth/AuthAttempt'
 import { dashboard } from 'routes/dashboard'
-import { me } from 'source/domains/Auth/Service'
 
 export default {
   /**
@@ -106,8 +105,8 @@ export default {
     started: false,
     isPassword: true,
     record: {
-      username: process.env.VUE_APP_DEFAULT_LOGIN,
-      password: process.env.VUE_APP_DEFAULT_PASSWORD
+      username: process.env.VUE_APP_DEV_USERNAME,
+      password: process.env.VUE_APP_DEV_PASSWORD
     }
   }),
   /**
@@ -140,8 +139,7 @@ export default {
     attemptSuccess ({ data }) {
       this.$store
         .dispatch('auth/login', data.token)
-        .then(this.attemptFetchUser)
-        .catch(() => this.$q.loading.hide())
+        .then(this.openDashboard)
     },
     /**
      */
@@ -150,20 +148,17 @@ export default {
     },
     /**
      */
-    attemptFetchUser () {
-      this.$q.loading.show({ delay: 0 })
-      me()
-        .then(this.openDashboard)
-        .finally(() => window.setTimeout(() => this.$q.loading.hide(), 2000))
-    },
-    /**
-     */
     openDashboard () {
-      let target = dashboard
-      if (this.$route.query.current) {
-        target = this.$route.query.current
+      this.setLoading(true)
+      let target = this.$route.query.fromForbidden
+      if (!target) {
+        target = this.$route.query.toForbidden
+      }
+      if (!target) {
+        target = dashboard
       }
       this.$browse(target)
+      window.setTimeout(() => this.setLoading(false), 2000)
     },
     /**
      * @param {{username: string, password: string}} credentials
@@ -199,37 +194,41 @@ export default {
 <style lang="stylus">
 @import '~src/css/quasar.variables.styl'
 
-.AuthIndex
+.AuthIndex {
   height 100vh
   overflow-x hidden
   opacity 0.3
   transition opacity 0.5s
 
-  &.started
+  &.started {
     opacity 1
+  }
 
-  > .AuthIndex__left
-    padding 0 6vw
+  > .AuthIndex__left {
+    padding 0 30px
     background-color white
     min-width 320px
 
-    > .AuthIndex__left__header
+    > .AuthIndex__left__header {
       margin 10vh 0 0 0
       padding 3vh 3vw
       display flex
       justify-content center
+    }
 
-    > .AuthIndex__left__form
+    > .AuthIndex__left__form {
       margin 10vh 0 0 0
+    }
 
-    .AuthIndex__logo
+    .AuthIndex__logo {
       max-height 100px
       max-width 100%
       user-select none
+    }
+  }
 
-  .AuthIndex__button
+  .AuthIndex__button {
     min-height 42px
-
-.q-field__label
-  color #c5d2d1
+  }
+}
 </style>

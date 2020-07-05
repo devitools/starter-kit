@@ -7,21 +7,44 @@
         alt=""
       >
     </p>
-    <p class="text-faded">
-      Sorry, nothing here...<strong>(404)</strong>
-    </p>
-    <q-btn
+    Not found <pre>{{ $route.fullPath }}</pre>
+    <br>
+    <QBtn
       color="secondary"
       style="width:200px;"
-      @click="$router.push('/')"
+      @click="$browse(-1)"
     >
       Go back
-    </q-btn>
+    </QBtn>
+    <br>
+    <br>
+    <QBtn
+      flat
+      style="width:200px;"
+      @click="$browse('/')"
+    >
+      Back Home
+    </QBtn>
   </div>
 </template>
 
 <script lang="js">
+import { QBtn } from 'quasar'
+
 export default {
-  name: 'Error404'
+  /**
+   */
+  name: 'Error404',
+  /**
+   */
+  components: { QBtn }
 }
 </script>
+
+<style scoped>
+pre {
+  display: inline-block;
+  background: #ddd;
+  padding: 2px 8px;
+}
+</style>

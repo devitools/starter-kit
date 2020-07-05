@@ -4,8 +4,7 @@ import { $store } from 'src/store'
  * @type {string[]}
  */
 export const whitelistPaths = [
-  '/',
-  '/register'
+  '/dashboard/settings/account'
 ]
 
 /**
@@ -38,6 +37,9 @@ export function isAllowedAction (action, domain, whitelist = []) {
   }
 
   const permissions = $store.getters['auth/getPermissions']
+  if (permissions.includes(action.namespace)) {
+    return true
+  }
   for (const level of action.levels) {
     if (permissions.includes(`${domain}.${level}`)) {
       return true
@@ -64,6 +66,10 @@ export function isAllowedPath (path, whitelist = []) {
  * @returns {boolean}
  */
 export function isAllowedRoute (to) {
+  if (to.meta.public) {
+    return true
+  }
+
   const namespace = to.meta.namespace || `${to.meta.domain}.${to.meta.level}`
 
   if (whitelistNamespaces.includes(namespace)) {

@@ -95,7 +95,7 @@ export default {
   /**
    */
   data: () => ({
-    expanded: false
+    expanded: process.env.VUE_APP_SIDEBAR_EXPANDED === 'true'
   }),
   /**
    */

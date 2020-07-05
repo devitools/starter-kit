@@ -1,3 +1,5 @@
+import http from 'src/settings/http'
+
 /**
  * @type {string}
  */
@@ -21,7 +23,7 @@ export const reportContext = (h) => {
  * @return {string}
  */
 export const reportLoading = (report) => {
-  return `${baseURL}/report/loading`
+  return `${baseURL}/loading`
   // return `${baseURL}/loading.html`
 }
 
@@ -36,10 +38,23 @@ export const reportAction = (report, token, printing) => {
   // return `${baseURL}/process.html?report=${report}?c=${token}&p=${printing}`
 }
 
+/**
+ * @param {string} report
+ * @param {string} token
+ * @param {Record<string, unknown>} data
+ * @param {string} type
+ * @return {Promise}
+ */
+export const reportDownload = (report, token, data, type = 'csv') => {
+  const url = `${baseURL}/process/${report}/${type}?c=${token}`
+  const config = { notExtractData: true }
+  return http.post(url, data, config)
+}
+
 // noinspection JSUnusedLocalSymbols
 /**
  * @return {string}
  */
 export const reportMethod = (report, token, printing) => {
-  return 'get'
+  return 'post'
 }

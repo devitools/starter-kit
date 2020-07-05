@@ -4,7 +4,6 @@ import user from 'source/domains/Admin/User/en-us'
 
 // domains/General
 import category from 'source/domains/General/Category/en-us'
-import product from 'source/domains/General/Product/en-us'
 
 // domains/Home
 import settingsAccount from 'source/domains/Settings/Account/en-us'
@@ -22,7 +21,7 @@ export default {
     profile, user
   },
   general: {
-    category, product
+    category
   },
   report
 }
