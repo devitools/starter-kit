@@ -13,7 +13,7 @@ export const icon = 'attach_money'
 /**
  * @type {function}
  */
-export const table = () => import('resources/views/dashboard/movement/revenue/RevenueTable.vue')
+export const table = () => import('resources/views/dashboard/movement/revenue/RevenueTable_.vue')
 
 /**
  * @type {function}
