@@ -1,5 +1,4 @@
 import Schema from '@devitools/Agnostic/Schema'
-import { Component } from '@devitools/Agnostic/Helper/interfaces'
 
 import CategoryService from './CategoryService'
 import { domain } from '../settings'
@@ -19,10 +18,9 @@ export default class CategorySchema extends Schema {
   service = CategoryService
 
   /**
-   * @param {Component} $component
    * Call schema builder method
    */
-  construct ($component: Component) {
+  construct () {
     // the magic happens
 
     this.addField('name')

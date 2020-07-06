@@ -20,10 +20,11 @@ export default class TypeSchema extends Schema {
   /**
    * Call schema builder method
    */
-  construct (): void {
+  construct () {
     // the magic happens
 
     this.addField('name')
+      .fieldIsInputPlan()
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormAutofocus()

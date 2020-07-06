@@ -20,7 +20,7 @@ export default class MarkerSchema extends Schema {
   /**
    * Call schema builder method
    */
-  construct (): void {
+  construct () {
     // the magic happens
 
     this.addField('name')
