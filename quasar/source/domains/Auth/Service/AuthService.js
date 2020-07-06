@@ -23,7 +23,7 @@ export default class AuthService extends Http {
    * @returns {Promise}
    */
   register (form) {
-    return this.post('/v1/auth/register', form)
+    return this.post('/v1/auth/sign-up', form)
   }
 
   /**

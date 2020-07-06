@@ -70,7 +70,7 @@
         :ripple="false"
         class="AuthIndex__button"
         text-color="light-blue-7"
-        to="/register"
+        to="/sign-up"
         :label="$lang('auth.signIn.goToRegister')"
       />
     </div>

@@ -20,7 +20,7 @@ use Source\Domains\Admin\User\UserRepository;
  *
  * @package Source\Http\Controllers\Auth
  */
-class Register extends AbstractController
+class SignUp extends AbstractController
 {
     /**
      * Create a new user
@@ -46,7 +46,7 @@ class Register extends AbstractController
         # get the profile to regular user
         /** @var Profile $profile */
         $profile = $profileRepository->getProfileByReference(Profile::REFERENCE_REGULAR);
-        $profileId = $profile->uuid;
+        $profileId = $profile->getValue('uuid');
 
         # get the id of agent
         $userId = null;
