@@ -28,5 +28,7 @@ export default class TypeSchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormAutofocus()
+      .fieldFormFill()
+      .validationRequired()
   }
 }

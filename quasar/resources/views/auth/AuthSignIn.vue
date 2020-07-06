@@ -130,8 +130,7 @@ export default {
     /**
      */
     attempting () {
-      // noinspection JSCheckFunctionSignatures
-      return this.$service.login(this.record.username, this.record.password)
+      return this.$service.signIn(this.record.username, this.record.password)
     },
     /**
      * @param {Object} response

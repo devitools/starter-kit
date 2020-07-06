@@ -27,6 +27,7 @@ export default class CategorySchema extends Schema {
       .fieldIsInputPlan()
       .fieldTableShow()
       .fieldTableWhere()
+      .fieldFormFill()
       .validationRequired()
 
     this.addField('description')
@@ -34,11 +35,13 @@ export default class CategorySchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormDefaultValue('')
+      .fieldFormFill()
 
     this.addField('active')
       .fieldIsToggle()
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormDefaultValue(true)
+      .fieldFormFill()
   }
 }

@@ -163,7 +163,7 @@ export default {
     /**
      */
     attempting () {
-      return this.$service.register(this.record)
+      return this.$service.signUp(this.record)
     },
     /**
      */

@@ -1,9 +1,10 @@
 import Schema from '@devitools/Agnostic/Schema'
+import { Component, Field, Payload } from '@devitools/Agnostic/Helper/interfaces'
+import { SCOPES } from '@devitools/Agnostic/enum'
 
 import Service from 'source/domains/Admin/User/Schema/UserService'
 import { domain } from 'source/domains/Admin/User/settings'
 
-import { SCOPES } from '@devitools/Agnostic/enum'
 import ProfileSchema from 'source/domains/Admin/Profile/Schema/ProfileSchema'
 
 /**
@@ -24,41 +25,47 @@ export default class UserSchema extends Schema {
    */
   construct () {
     this.addField('name')
+      .fieldIsInputPlan()
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormAutofocus()
       .fieldFormWidth(50)
+      .fieldFormFill()
       .validationRequired()
 
     this.addField('username')
+      .fieldIsInputPlan()
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsInputPlan()
       .fieldFormWidth(50)
+      .fieldFormFill()
       .validationRequired()
       .validationMinLength(2)
       .validationEmail()
-      /*
-      .validationAs('regex', function (value) {
-        return (/(^([a-zA-Z]+)([_]+)?(\d+)?([a-zA-Z]+)?)$/g).test(value)
-      })
-      */
+    /*
+    .validationAs('regex', function (value) {
+      return (/(^([a-zA-Z]+)([_]+)?(\d+)?([a-zA-Z]+)?)$/g).test(value)
+    })
+    */
 
     this.addField('profile')
+      .fieldIsSelectRemote(ProfileSchema.provideRemote())
       .fieldTableShow()
       .fieldTableWhere()
-      .fieldIsSelectRemote(ProfileSchema.provideRemote())
       .fieldFormWidth(100)
+      .fieldFormFill()
       .validationRequired()
 
     this.addField('password')
-      .fieldFormWidth(50)
       .fieldIsPassword()
-      .fieldOn('generate', function ({ $event }) {
+      .fieldFormWidth(50)
+      .fieldFormFill()
+      .fieldOn('generate', function (this: Component, payload: Payload) {
+        const { $event } = payload
         this.$getField('confirmPassword').$setValue($event)
       })
       .validationPassword()
-      .validationRequiredWhen(function () {
+      .validationRequiredWhen(function (this: Component) {
         return this.scope === SCOPES.SCOPE_ADD
       })
 
@@ -72,7 +79,7 @@ export default class UserSchema extends Schema {
       .fieldTableWhere()
       .fieldIsToggle()
       .fieldFormDefaultValue(true)
-      .fieldConfigure(function (field) {
+      .fieldConfigure(function (this: Component, field: Field) {
         if (this.scope === SCOPES.SCOPE_ADD) {
           field.$layout.formHidden = true
         }

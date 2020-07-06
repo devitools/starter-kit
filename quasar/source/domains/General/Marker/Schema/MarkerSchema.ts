@@ -28,5 +28,7 @@ export default class MarkerSchema extends Schema {
       .fieldTableShow()
       .fieldTableWhere()
       .fieldFormAutofocus()
+      .fieldFormFill()
+      .validationRequired()
   }
 }
