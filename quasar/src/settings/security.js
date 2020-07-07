@@ -10,6 +10,12 @@ export const whitelistPaths = [
 /**
  * @type {string[]}
  */
+export const whitelistDomains = [
+]
+
+/**
+ * @type {string[]}
+ */
 export const whitelistNamespaces = [
   'settings.account',
   'settings.balance'
@@ -67,6 +73,11 @@ export function isAllowedPath (path, whitelist = []) {
  */
 export function isAllowedRoute (to) {
   if (to.meta.public) {
+    return true
+  }
+
+  const domain = to.meta.domain
+  if (whitelistDomains.includes(domain)) {
     return true
   }
 

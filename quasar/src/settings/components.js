@@ -3,6 +3,7 @@ import { QIcon } from 'quasar'
 
 import { getLocale } from '@devitools/Lang'
 import { $store } from 'src/store'
+import { downloadFile } from 'src/settings/storage'
 
 /**
  * @param {boolean} native
@@ -116,12 +117,12 @@ export default {
   },
   radio: {
     is: 'q-option-group',
-    attrs: { inline: true, ...attrs, useReadonly: false },
+    attrs: { inline: true, ...attrs, useReadonly: false, options: [] },
     parseOutput: undefined
   },
   select: {
     is: 'q-select',
-    attrs: { popupContentClass: 'uppercase', ...attrs, uppercase: true },
+    attrs: { popupContentClass: 'uppercase', ...attrs, uppercase: true, options: [] },
     parseOutput: undefined
   },
   toggle: {
@@ -132,7 +133,8 @@ export default {
       'toggle-indeterminate': false,
       'true-value': true,
       'false-value': false,
-      value: false
+      value: false,
+      options: []
     },
     parseOutput: undefined
   },
@@ -188,6 +190,15 @@ export default {
   file: {
     is: 'AppAwsFile',
     attrs: () => $store.getters['auth/getAwsCredentials'],
+    parseOutput: undefined
+  },
+  fileSync: {
+    is: 'AppFileSync',
+    attrs: {
+      ...attrs,
+      clearable: false,
+      downloadFile
+    },
     parseOutput: undefined
   },
   phoneInternational: {

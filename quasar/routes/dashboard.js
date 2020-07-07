@@ -5,7 +5,6 @@ import { changeRoute } from 'source/modules/Dashboard/router/middleware'
 import { index, layout } from 'source/modules/Dashboard/components'
 
 import admin from 'routes/dashboard/admin'
-import general from 'routes/dashboard/general'
 
 import { domain as account } from 'source/domains/Settings/Account/settings'
 
@@ -27,7 +26,6 @@ export default ($router) => {
     group.redirect('', dashboard)
     group.route(dashboard, index, { name: 'dashboard' })
 
-    general(group)
     admin(group)
 
     group.route(

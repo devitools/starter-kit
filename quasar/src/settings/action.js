@@ -110,7 +110,7 @@ export function defaultActions (schema) {
       .actionScopes([SCOPES.SCOPE_INDEX])
       .actionLevels([RULES.LEVEL_EDIT])
       .actionPositions(readonly ? [] : ALL_TABLE_POSITIONS)
-      .actionColor('accent')
+      .actionColor('secondary')
       .actionIcon('edit')
 
     schema.addAction('destroy')
@@ -286,16 +286,17 @@ export default (schema, id, order, scopes = [], positions = [], attrs = {}, clas
   const attributes = {
     label: '',
     color: 'white',
+    textColor: undefined,
     tooltip: undefined,
     icon: undefined,
     disabled: false
   }
-  const handler = function ({ context }) {
+  const handler = function (payload) {
     if (!schema[id]) {
       return
     }
     if (typeof schema[id] === 'function') {
-      schema[id].call(this, context)
+      schema[id].call(this, { schema, ...payload })
     }
   }
 
@@ -305,7 +306,7 @@ export default (schema, id, order, scopes = [], positions = [], attrs = {}, clas
     dropdown: false,
     validate: undefined,
     on: { click: handler },
-    scopes: scopes,
+    scopes: [...scopes],
     positions: positions,
     class: classNames,
     order: order,

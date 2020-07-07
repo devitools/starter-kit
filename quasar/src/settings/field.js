@@ -4,7 +4,7 @@ import components from 'src/settings/components'
 /**
  * @type {string}
  */
-export const component = 'input'
+export const component = 'plan'
 
 /**
  * @type {Timestamp[]}
@@ -76,7 +76,8 @@ export default ($key, options = {}, attrs = {}, on = {}) => {
       tableFormat: undefined,
       tableWhere: undefined
     },
-    scopes: options.scopes,
-    chars: ''
+    scopes: [...options.scopes],
+    chars: '',
+    $fill: ''
   }
 }

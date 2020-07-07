@@ -93,7 +93,7 @@
 
 <script>
 import { QAvatar, QBtnDropdown, QItem, QItemLabel, QItemSection, QList, QToggle } from 'quasar'
-import $store from '@devitools/store'
+import $emporium from '@devitools/emporium'
 import { otherwise } from 'src/router'
 
 export default {
@@ -173,24 +173,24 @@ export default {
       return
     }
 
-    this.debugging = $store.state.debugging
+    this.debugging = $emporium.state.debugging
     this.$watch('debugging', (value) => {
-      $store.commit('updateDebugging', value)
+      $emporium.commit('updateDebugging', value)
     })
 
-    this.profiling = $store.state.profiling
+    this.profiling = $emporium.state.profiling
     this.$watch('profiling', (value) => {
-      $store.commit('updateProfiling', value)
+      $emporium.commit('updateProfiling', value)
     })
 
-    this.filling = $store.state.filling
+    this.filling = $emporium.state.filling
     this.$watch('filling', (value) => {
-      $store.commit('updateFilling', value)
+      $emporium.commit('updateFilling', value)
     })
 
-    this.purging = $store.state.purging
+    this.purging = $emporium.state.purging
     this.$watch('purging', (value) => {
-      $store.commit('updatePurging', value)
+      $emporium.commit('updatePurging', value)
     })
   }
 }

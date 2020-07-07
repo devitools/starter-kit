@@ -41,29 +41,22 @@ class DatabaseSeeder extends Seeder
                 'name' => 'ADMIN',
                 'reference' => Profile::REFERENCE_ADMIN,
                 'permissions' => [
-                    PermissionNamespaces::ADMIN_PROFILE_ACTION,
-                    PermissionNamespaces::ADMIN_PROFILE_ADD,
-                    PermissionNamespaces::ADMIN_PROFILE_DESTROY,
-                    PermissionNamespaces::ADMIN_PROFILE_EDIT,
-                    PermissionNamespaces::ADMIN_PROFILE_INDEX,
-                    PermissionNamespaces::ADMIN_PROFILE_TRASH,
-                    PermissionNamespaces::ADMIN_PROFILE_VIEW,
-
-                    PermissionNamespaces::ADMIN_USER_ACTION,
-                    PermissionNamespaces::ADMIN_USER_ADD,
-                    PermissionNamespaces::ADMIN_USER_DESTROY,
-                    PermissionNamespaces::ADMIN_USER_EDIT,
-                    PermissionNamespaces::ADMIN_USER_INDEX,
-                    PermissionNamespaces::ADMIN_USER_TRASH,
-                    PermissionNamespaces::ADMIN_USER_VIEW,
-
-                    PermissionNamespaces::GENERAL_CATEGORY_ACTION,
-                    PermissionNamespaces::GENERAL_CATEGORY_ADD,
-                    PermissionNamespaces::GENERAL_CATEGORY_DESTROY,
-                    PermissionNamespaces::GENERAL_CATEGORY_EDIT,
-                    PermissionNamespaces::GENERAL_CATEGORY_INDEX,
-                    PermissionNamespaces::GENERAL_CATEGORY_TRASH,
-                    PermissionNamespaces::GENERAL_CATEGORY_VIEW,
+                    // admin.profile
+                    'admin.profile.action',
+                    'admin.profile.add',
+                    'admin.profile.destroy',
+                    'admin.profile.edit',
+                    'admin.profile.index',
+                    'admin.profile.trash',
+                    'admin.profile.view',
+                    // admin.user
+                    'admin.user.action',
+                    'admin.user.add',
+                    'admin.user.destroy',
+                    'admin.user.edit',
+                    'admin.user.index',
+                    'admin.user.trash',
+                    'admin.user.view',
                 ]
             ]
         );
@@ -71,16 +64,9 @@ class DatabaseSeeder extends Seeder
         $playerProfileId = ProfileRepository::instance()->create(
             [
                 'id' => '1082340c-9b6e-11ea-992c-0242ac160005',
-                'name' => 'REGULAR',
+                'name' => 'AFFILIATE',
                 'reference' => Profile::REFERENCE_REGULAR,
                 'permissions' => [
-                    PermissionNamespaces::GENERAL_CATEGORY_ACTION,
-                    PermissionNamespaces::GENERAL_CATEGORY_ADD,
-                    PermissionNamespaces::GENERAL_CATEGORY_DESTROY,
-                    PermissionNamespaces::GENERAL_CATEGORY_EDIT,
-                    PermissionNamespaces::GENERAL_CATEGORY_INDEX,
-                    PermissionNamespaces::GENERAL_CATEGORY_TRASH,
-                    PermissionNamespaces::GENERAL_CATEGORY_VIEW,
                 ]
             ]
         );
@@ -91,7 +77,7 @@ class DatabaseSeeder extends Seeder
             [
                 'profileId' => Uuid::fromString($adminProfileId)->getBytes(),
                 'name' => 'ADMIN',
-                'username' => 'root@devi.tools',
+                'username' => 'root@andy.co',
                 'password' => 'aq1sw2de3',
             ]
         );
@@ -99,8 +85,8 @@ class DatabaseSeeder extends Seeder
         UserRepository::instance()->create(
             [
                 'profileId' => Uuid::fromString($playerProfileId)->getBytes(),
-                'name' => 'REGULAR',
-                'username' => 'regular@devi.tools',
+                'name' => 'AFFILIATE',
+                'username' => 'affiliate@andy.co',
                 'password' => 'aq1sw2de3',
             ]
         );

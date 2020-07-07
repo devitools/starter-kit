@@ -106,7 +106,6 @@ export const renderField = (h, field, input, value, ref, tabIndex, attrs = {}) =
   }
 
   if (field.attrs.useReadonly && field.attrs.disable) {
-    // console.log('~> field', JSON.stringify([field.is, field.attrs.useReadonly, field.attrs.disable]))
     delete field.attrs.disable
     field.attrs.readonly = true
   }

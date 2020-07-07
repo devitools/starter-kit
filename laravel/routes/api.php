@@ -19,7 +19,6 @@ use Devitools\Http\Routing\Router;
 Router::prefix('v1')->group(static function () {
     Router::group([], __DIR__ . '/api/auth.php');
     Router::group([], __DIR__ . '/api/admin.php');
-    Router::group([], __DIR__ . '/api/general.php');
 });
 
 Router::any('{any}', static function ($any) {

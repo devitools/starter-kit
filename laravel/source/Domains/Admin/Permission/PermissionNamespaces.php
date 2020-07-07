@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Source\Domains\Admin\Permission;
 
+use function PhpBrasil\Collection\pack;
+
 /**
  * Class PermissionNamespaces
  *
@@ -12,109 +14,78 @@ namespace Source\Domains\Admin\Permission;
 abstract class PermissionNamespaces
 {
     /**
-     * @var string
+     * @var array
      */
-    public const ADMIN_PROFILE_ACTION = 'admin.profile.action';
+    protected static array $namespaces = [];
 
     /**
-     * @var string
+     * @var array
      */
-    public const ADMIN_PROFILE_ADD = 'admin.profile.add';
+    protected static array $dependencies = [];
 
     /**
-     * @var string
+     * @return array
      */
-    public const ADMIN_PROFILE_DESTROY = 'admin.profile.destroy';
+    public static function getNamespaces(): array
+    {
+        return static::$namespaces;
+    }
 
     /**
-     * @var string
+     * @return array
      */
-    public const ADMIN_PROFILE_EDIT = 'admin.profile.edit';
+    public static function getDependencies(): array
+    {
+        return static::$dependencies;
+    }
 
     /**
-     * @var string
+     * @return void
      */
-    public const ADMIN_PROFILE_INDEX = 'admin.profile.index';
+    public static function bootstrap(): void
+    {
+        static::register('admin.profile');
+        static::register('admin.user', [], ['action' => ['admin.profile.index']]);
+    }
 
     /**
-     * @var string
+     * @param string $domain
+     * @param array $levels
+     * @param array $dependencies
      */
-    public const ADMIN_PROFILE_TRASH = 'admin.profile.trash';
+    public static function register(string $domain, array $levels = [], array $dependencies = []): void
+    {
+        if (!count($levels)) {
+            $levels = [
+                'action',
+                'add',
+                'destroy',
+                'edit',
+                'index',
+                'trash',
+                'view',
+            ];
+        }
 
-    /**
-     * @var string
-     */
-    public const ADMIN_PROFILE_VIEW = 'admin.profile.view';
+        $namespaces = array_map(fn($level) => "{$domain}.{$level}", $levels);
+        static::$namespaces = [...static::$namespaces, ...$namespaces];
 
-    /**
-     * @var string
-     */
-    public const ADMIN_USER_ACTION = 'admin.user.action';
+        if (in_array('action', $levels, true)) {
+            $dependencies['action'] = static::defaultDependencies($domain, $dependencies);
+        }
 
-    /**
-     * @var string
-     */
-    public const ADMIN_USER_ADD = 'admin.user.add';
+        $reducer = static function ($accumulator, $dependencies, $level) use ($domain) {
+            $namespace = "{$domain}.{$level}";
+            if (!isset($accumulator[$namespace])) {
+                $accumulator[$namespace] = $dependencies;
+                return $accumulator;
+            }
+            $accumulator[$namespace] = array_merge($accumulator[$namespace], $dependencies);
+            return $accumulator;
+        };
 
-    /**
-     * @var string
-     */
-    public const ADMIN_USER_DESTROY = 'admin.user.destroy';
-
-    /**
-     * @var string
-     */
-    public const ADMIN_USER_EDIT = 'admin.user.edit';
-
-    /**
-     * @var string
-     */
-    public const ADMIN_USER_INDEX = 'admin.user.index';
-
-    /**
-     * @var string
-     */
-    public const ADMIN_USER_TRASH = 'admin.user.trash';
-
-    /**
-     * @var string
-     */
-    public const ADMIN_USER_VIEW = 'admin.user.view';
-
-    /**
-     * @var string
-     */
-    public const GENERAL_CATEGORY_ACTION = 'general.category.action';
-
-    /**
-     * @var string
-     */
-    public const GENERAL_CATEGORY_ADD = 'general.category.add';
-
-    /**
-     * @var string
-     */
-    public const GENERAL_CATEGORY_DESTROY = 'general.category.destroy';
-
-    /**
-     * @var string
-     */
-    public const GENERAL_CATEGORY_EDIT = 'general.category.edit';
-
-    /**
-     * @var string
-     */
-    public const GENERAL_CATEGORY_INDEX = 'general.category.index';
-
-    /**
-     * @var string
-     */
-    public const GENERAL_CATEGORY_TRASH = 'general.category.trash';
-
-    /**
-     * @var string
-     */
-    public const GENERAL_CATEGORY_VIEW = 'general.category.view';
+        static::$dependencies = (array)pack($dependencies)->reduce($reducer, static::$dependencies);
+    }
 
     /**
      * @param string $namespace
@@ -123,18 +94,25 @@ abstract class PermissionNamespaces
      */
     public static function dependencies(string $namespace): array
     {
-        $dependencies = [
-            static::ADMIN_PROFILE_ACTION => [
-                static::ADMIN_PROFILE_INDEX,
-            ],
-            static::ADMIN_USER_ACTION => [
-                static::ADMIN_USER_INDEX,
-                static::ADMIN_PROFILE_INDEX,
-            ],
-            static::GENERAL_CATEGORY_ACTION => [
-                static::GENERAL_CATEGORY_INDEX,
-            ],
-        ];
-        return $dependencies[$namespace] ?? [];
+        return static::$dependencies[$namespace] ?? [];
+    }
+
+    /**
+     * @param string $domain
+     * @param array $dependencies
+     *
+     * @return string[]
+     */
+    private static function defaultDependencies(string $domain, array $dependencies): array
+    {
+        if (!isset($dependencies['action'])) {
+            return ["{$domain}.index"];
+        }
+
+        if (in_array("{$domain}.index", $dependencies['action'], true)) {
+            return $dependencies['action'];
+        }
+
+        return array_merge($dependencies['action'], ["{$domain}.index"]);
     }
 }
