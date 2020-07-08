@@ -8,28 +8,13 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4",
-        "ext-curl": "*",
-        "ext-json": "*",
-        "ext-posix": "*",
-        "ext-zip": "*",
-        "doctrine/dbal": "^2.10",
-        "dyrynda/laravel-efficient-uuid": "^4.0",
-        "dyrynda/laravel-model-uuid": "^6.1",
+        "php": "^7.2.5",
+        "devitools/adapter-laravel": "^2.1.0",
         "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^1.0",
+        "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/horizon": "^4.3",
-        "laravel/tinker": "^2.0",
-        "neitanod/forceutf8": "^2.0",
-        "owen-it/laravel-auditing": "^10.0",
-        "php-brasil/collection": "^0.2.5",
-        "phpzm/phpee": "^1.0",
-        "predis/predis": "^1.1",
-        "sentry/sentry-laravel": "^1.7",
-        "tymon/jwt-auth": "^1.0",
-        "vlucas/phpdotenv": "4.1"
+        "laravel/tinker": "^2.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
@@ -51,16 +36,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Devitools\\": "@devitools/",
             "Tests\\": "tests/",
             "Source\\": "source/"
         },
         "classmap": [
             "database/seeds",
             "database/factories"
-        ],
-        "files": [
-            "@devitools/Helper/index.php"
         ]
     },
     "autoload-dev": {

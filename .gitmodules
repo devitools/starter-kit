@@ -1,6 +1,3 @@
 [submodule "quasar/@devitools"]
 	path = quasar/@devitools
 	url = https://github.com/devitools/quasar.git
-[submodule "laravel/@devitools"]
-	path = laravel/@devitools
-	url = https://github.com/devitools/laravel.git
