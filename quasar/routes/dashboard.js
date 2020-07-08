@@ -1,12 +1,12 @@
-import { SCOPES } from '@devitools/Agnostic/enum.js'
+// middleware
+import { changeRoute, checkModified } from 'source/modules/Dashboard/router/middleware'
 
-import { changeRoute } from 'source/modules/Dashboard/router/middleware'
-// routes
+// components
 import { index, layout } from 'source/modules/Dashboard/components'
 
-import admin from 'routes/dashboard/admin'
-
-import { domain as account } from 'source/domains/Settings/Account/settings'
+// routes
+import admin from './dashboard/admin'
+import settings from './dashboard/settings'
 
 /**
  * @type {string}
@@ -27,14 +27,14 @@ export default ($router) => {
     group.route(dashboard, index, { name: 'dashboard' })
 
     admin(group)
-
-    group.route(
-      '/dashboard/settings/account',
-      () => import('resources/views/dashboard/settings/MyAccountForm.vue'),
-      { name: 'my-account', namespace: account, scope: SCOPES.SCOPE_EDIT }
-    )
+    settings(group)
   })
+
+  // check if there is modification
+  $router.beforeEach(checkModified)
 
   // update the info about the current route
   $router.beforeEach(changeRoute)
+
+  // $router.beforeEach(updateTransition)
 }

@@ -59,18 +59,8 @@
 </template>
 
 <script>
-// noinspection ES6CheckImport
-import {
-  QLayout,
-  QHeader,
-  QToolbar,
-  QBtn,
-  QSpace,
-  QDrawer,
-  QScrollArea,
-  QPageContainer,
-  QPage
-} from 'quasar'
+import { QBtn, QDrawer, QHeader, QLayout, QPage, QPageContainer, QScrollArea, QSpace, QToolbar } from 'quasar'
+import $emporium from '@devitools/emporium'
 import DashboardActions from 'source/modules/Dashboard/components/DashboardActions'
 import DashboardMenu from 'source/modules/Dashboard/components/DashboardMenu'
 import AppBreadcrumb from '@devitools/Components/Breadcrumb/AppBreadcrumb'
@@ -128,6 +118,18 @@ export default {
   },
   /**
    */
+  methods: {
+    /**
+     */
+    beforeUpload ($event) {
+      if (!$emporium.state.modified) {
+        return
+      }
+      $event.returnValue = this.$lang('agnostic.modified')
+    }
+  },
+  /**
+   */
   watch: {
     /**
      */
@@ -162,6 +164,13 @@ export default {
    */
   mounted () {
     this.$q.loading.hide()
+
+    window.addEventListener('beforeunload', this.beforeUpload)
+  },
+  /**
+   */
+  destroyed () {
+    window.removeEventListener('beforeunload', this.beforeUpload)
   }
 }
 </script>

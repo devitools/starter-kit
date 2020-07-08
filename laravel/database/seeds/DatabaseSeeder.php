@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         $playerProfileId = ProfileRepository::instance()->create(
             [
                 'id' => '1082340c-9b6e-11ea-992c-0242ac160005',
-                'name' => 'AFFILIATE',
+                'name' => 'REGULAR',
                 'reference' => Profile::REFERENCE_REGULAR,
                 'permissions' => [
                 ]
@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
             [
                 'profileId' => Uuid::fromString($adminProfileId)->getBytes(),
                 'name' => 'ADMIN',
-                'username' => 'root@andy.co',
+                'username' => 'root@devi.tools',
                 'password' => 'aq1sw2de3',
             ]
         );
@@ -85,8 +85,8 @@ class DatabaseSeeder extends Seeder
         UserRepository::instance()->create(
             [
                 'profileId' => Uuid::fromString($playerProfileId)->getBytes(),
-                'name' => 'AFFILIATE',
-                'username' => 'affiliate@andy.co',
+                'name' => 'REGULAR',
+                'username' => 'regular@devi.tools',
                 'password' => 'aq1sw2de3',
             ]
         );
