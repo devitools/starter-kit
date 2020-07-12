@@ -70,7 +70,7 @@
         :ripple="false"
         class="AuthIndex__button"
         text-color="light-blue-7"
-        to="/register"
+        to="/signup"
         :label="$lang('auth.signIn.goToRegister')"
       />
     </div>
@@ -125,7 +125,7 @@ export default {
     /**
      */
     attemptFail () {
-      this.$message.warning(this.$lang('auth.signIn.validation'))
+      this.$message.warning(this.$lang('auth.signIn.error'))
     },
     /**
      */

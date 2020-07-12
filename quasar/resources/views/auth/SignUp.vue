@@ -99,6 +99,14 @@
             type="submit"
             :loading="loading"
           />
+          <q-btn
+            unelevated
+            :ripple="false"
+            class="AuthIndex__button"
+            text-color="light-blue-7"
+            to="/signin"
+            :label="$lang('auth.register.backToLogin')"
+          />
         </div>
       </form>
     </div>
