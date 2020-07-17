@@ -1,4 +1,4 @@
-import UserSchema from '../../../Admin/User/Schema/UserSchema.js'
+import UserSchema from '../../../Admin/User/Schema/UserSchema'
 
 /**
  * @class {MyAccountSchema}

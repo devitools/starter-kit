@@ -7,7 +7,7 @@ import { signIn, signUp, layout } from 'source/modules/Auth/components'
 export default ($router) => {
   $router.group(otherwise, layout, (group) => {
     group.route('', signIn, { name: 'sign-in', public: true })
-    group.route('/signup', signUp, { name: 'signUp', public: true })
+    group.route('/sign-up', signUp, { name: 'sign-up', public: true })
   })
 
   // check user is logged in app

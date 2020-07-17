@@ -70,7 +70,7 @@
         :ripple="false"
         class="AuthIndex__button"
         text-color="light-blue-7"
-        to="/signup"
+        to="/sign-up"
         :label="$lang('auth.signIn.goToRegister')"
       />
     </div>
@@ -130,8 +130,7 @@ export default {
     /**
      */
     attempting () {
-      // noinspection JSCheckFunctionSignatures
-      return this.$service.login(this.record.username, this.record.password)
+      return this.$service.signIn(this.record.username, this.record.password)
     },
     /**
      * @param {Object} response

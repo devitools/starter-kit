@@ -52,7 +52,27 @@
         <QItemSection>
           <QToggle
             v-model="debugging"
-            label="Debugger"
+            label="debugging"
+            color="red"
+          />
+        </QItemSection>
+      </QItem>
+
+      <QItem v-if="$dev">
+        <QItemSection>
+          <QToggle
+            v-model="profiling"
+            label="profiling"
+            color="red"
+          />
+        </QItemSection>
+      </QItem>
+
+      <QItem v-if="$dev">
+        <QItemSection>
+          <QToggle
+            v-model="filling"
+            label="filling"
             color="red"
           />
         </QItemSection>
@@ -62,7 +82,7 @@
         <QItemSection>
           <QToggle
             v-model="purging"
-            label="Purger"
+            label="purging"
             color="red"
           />
         </QItemSection>
@@ -95,6 +115,8 @@ export default {
    */
   data: () => ({
     debugging: false,
+    profiling: false,
+    filling: false,
     purging: false
   }),
   /**
@@ -152,13 +174,23 @@ export default {
     }
 
     this.debugging = $store.state.debugging
-    this.$watch('debugging', (debugging) => {
-      $store.commit('updateDebugging', debugging)
+    this.$watch('debugging', (value) => {
+      $store.commit('updateDebugging', value)
+    })
+
+    this.profiling = $store.state.profiling
+    this.$watch('profiling', (value) => {
+      $store.commit('updateProfiling', value)
+    })
+
+    this.filling = $store.state.filling
+    this.$watch('filling', (value) => {
+      $store.commit('updateFilling', value)
     })
 
     this.purging = $store.state.purging
-    this.$watch('purging', (purging) => {
-      $store.commit('updatePurging', purging)
+    this.$watch('purging', (value) => {
+      $store.commit('updatePurging', value)
     })
   }
 }

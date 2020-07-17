@@ -85,8 +85,7 @@ class Profile extends Schema implements ProfileInterface
                     return ['namespace' => $data['namespace'] ?? null];
                 }
                 return ['namespace' => $data];
-            })
-            ->validationRequired();
+            });
 
         $this->addEvent('saving', ProfileSaving::class);
     }
