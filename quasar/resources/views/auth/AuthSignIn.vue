@@ -23,7 +23,7 @@
               outlined
               v-model="record.username"
               :error="$v.record.username.$error"
-              :error-message="$lang('validation.required')"
+              :error-message="$lang('auth.signIn.error')"
             >
               <template v-slot:prepend>
                 <QIcon name="person" />
@@ -37,7 +37,7 @@
               outlined
               v-model="record.password"
               :error="$v.record.password.$error"
-              :error-message="$lang('validation.password')"
+              :error-message="$lang('auth.signIn.error')"
             >
               <template v-slot:prepend>
                 <QIcon :name="record.password ? 'vpn_key' : 'lock'" />
@@ -125,7 +125,7 @@ export default {
     /**
      */
     attemptFail () {
-      this.$message.warning(this.$lang('auth.signIn.validation'))
+      this.$message.warning(this.$lang('auth.signIn.error'))
     },
     /**
      */
