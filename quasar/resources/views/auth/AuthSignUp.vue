@@ -51,7 +51,7 @@
               outlined
               v-model="record.password"
               :error="$v.record.password.$error"
-              :error-message="$lang('validation.password')"
+              :error-message="$lang('validation.required')"
             >
               <template v-slot:prepend>
                 <QIcon :name="record.password ? 'vpn_key' : 'lock'" />
@@ -104,7 +104,7 @@
             :ripple="false"
             class="AuthIndex__button"
             text-color="light-blue-7"
-            to="/signin"
+            to="/"
             :label="$lang('auth.register.backToLogin')"
           />
         </div>
@@ -117,7 +117,7 @@
 import { QBtn, QIcon, QInput } from 'quasar'
 // https://chancejs.com/index.html
 import chance from 'chance'
-import { required, sameAs } from 'vuelidate/lib/validators'
+import { email, required, sameAs } from 'vuelidate/lib/validators'
 import AuthAttempt from 'source/modules/Auth/AuthAttempt'
 import { dashboard } from 'routes/dashboard'
 import { otherwise } from 'src/router'
@@ -154,7 +154,7 @@ export default {
     return {
       record: {
         name: { required },
-        username: { required },
+        username: { required, email },
         password: { required },
         confirmPassword: { required, sameAsPassword: sameAs('password') }
       }
@@ -166,7 +166,7 @@ export default {
     /**
      */
     attemptFail () {
-      this.$message.warning(this.$lang('auth.register.validation'))
+      this.$message.warning(this.$lang('auth.register.error'))
     },
     /**
      */

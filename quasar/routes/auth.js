@@ -8,7 +8,6 @@ export default ($router) => {
   $router.group(otherwise, layout, (group) => {
     group.route('', signIn, { name: 'sign-in', public: true })
     group.route('/signup', signUp, { name: 'signUp', public: true })
-    group.route('/signin', signIn, { name: 'signIn', public: true })
   })
 
   // check user is logged in app
