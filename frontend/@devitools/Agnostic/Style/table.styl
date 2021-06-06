@@ -1,0 +1,372 @@
+@import '~src/css/quasar.variables.styl'
+
+.SchemaTable {
+  /* start QTableTop */
+
+  & > .q-table__top {
+    border-bottom: 1px solid #dddddd;
+
+    & > .app-form-buttons {
+      & > button {
+        float: none;
+        min-width: auto;
+        margin-right: 10px;
+
+        .q-icon {
+          color: #767676;
+        }
+      }
+    }
+
+    & > #search.q-field {
+      width: 30%;
+      transition: width 0.3s;
+
+      &.q-field--focused {
+        width: 35%;
+      }
+    }
+  }
+
+  @media (max-width 768px) {
+    & > .q-table__top {
+      & > .app-form-buttons {
+        display: none;
+      }
+
+      & > #search {
+        width: 100% !important;
+      }
+
+      & > #selector {
+        display: none;
+      }
+    }
+  }
+
+  /* end QTableTop */
+
+  /* start QTableMiddle */
+
+  & > .q-table__middle {
+    /* border-top: 1px solid #dddddd; */
+
+    & > .q-table {
+      & > thead tr:not(.q-table__progress)
+      & > tbody tr
+      & > tbody td {
+        height: 40px;
+      }
+
+      & > thead > tr:nth-child(1) > th {
+        position: sticky;
+        zoom: 1;
+        top: 0;
+        overflow: hidden;
+        height: 40px;
+        z-index: 1000;
+        opacity: 1;
+        color: #4f4f4f;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+        background: linear-gradient(180deg, #f7f7f7 0, #f1f1f1 20%, #ededed 50%, #e0e0e0 100%);
+        text-transform: none;
+      }
+
+      & > tbody > tr {
+        &:hover {
+          .app-form-buttons {
+            transform: scale(1);
+            padding: 10px;
+          }
+        }
+
+        & > td {
+          & > .app-form-buttons {
+            padding: 2px 60px 2px 16px !important;
+            position: absolute;
+            transform: scale(0);
+            top: 0;
+            left: 0;
+            height: 100%;
+            /*background: linear-gradient(90deg, #f7f7f7 0%, rgba(239, 239, 239, 0.9) 60%, rgba(239, 239, 239, 0) 100%);*/
+            background: linear-gradient(90deg, #f7f7f7 0%, rgba(239, 239, 239, 0.95) 85%, rgba(239, 239, 239, 0) 100%);
+            z-index: 1000;
+
+            & > button {
+              min-width: auto;
+              margin-right: 8px;
+
+              .q-icon {
+                color: #767676;
+              }
+            }
+          }
+
+          & > i.q-icon-inline {
+            font-size: 1.6rem;
+            color: #767676;
+          }
+
+          & > .q-fab-cell {
+            & > .q-btn.q-btn-item {
+              & > .q-btn__wrapper {
+                padding: 8px;
+                min-height: 40px;
+                min-width: 40px;
+
+                .q-icon {
+                  color: #767676;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.q-table--loading {
+    & > .q-table__middle {
+      & > .q-table {
+        & > thead > tr:nth-child(1) > th {
+          opacity: 0.65 !important;
+        }
+      }
+    }
+  }
+
+  &.trash {
+    & > .q-table__middle {
+      background-color: #ffeee8;
+
+      & .q-table > tbody > tr > td {
+        & > .app-form-buttons {
+          background: linear-gradient(90deg, #f7e7e1 0%, rgba(235, 224, 221, 0.9) 86%, rgba(235, 224, 221, 0) 100%);
+        }
+      }
+    }
+  }
+}
+
+/* end QTableMiddle */
+
+/* start QTableWhere */
+
+.SchemaTableSide__absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.SchemaTableSide__shadow {
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.16), 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
+.SchemaTableWhere {
+  @extend .SchemaTableSide__absolute
+
+  &.SchemaTableWhere--open {
+    & > .SchemaTableWhere__side {
+      transform: translateX(0);
+    }
+
+    & > .SchemaTableWhere__toggle {
+      & > #search {
+        transform: scale(0) rotate(180deg);
+        position: absolute;
+      }
+
+      & > #arrow {
+        transform: scale(1) rotate(180deg);
+      }
+    }
+
+    & > .SchemaTableWhere__backdrop {
+      display: block;
+    }
+  }
+
+  & > .SchemaTableWhere__backdrop {
+    position: sticky;
+    height: calc(100vh - 61px);
+    width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: 1997;
+    background: rgba(0, 0, 0, 0.05);
+    display: none;
+  }
+
+  & > .SchemaTableWhere__side {
+    @extend .SchemaTableSide__absolute, .SchemaTableSide__shadow
+    z-index: 1998;
+    background-color: #ffffff;
+    height: calc(100vh - 60px);
+    width: 300px;
+    transform: translateX(320px);
+    transition: transform .3s;
+
+    .SchemaTableWhere__form {
+      padding-top: 10px;
+      height: calc(100vh - 120px);
+      overflow: auto;
+
+      > .SchemaTableWhere__component {
+        padding: 6px 12px;
+
+        > label {
+          display: block;
+          color: #3c3c3c;
+          font-size: 0.8rem;
+
+          > .q-field > .q-field__inner > .q-field__control > .q-field__control-container > input.q-field__native,
+          .q-field.q-select > .q-field__inner > .q-field__control > .q-field__control-container {
+            padding-top: 5px;
+            padding-bottom: 4px;
+          }
+        }
+      }
+    }
+
+    .app-form-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      height: 58px;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+
+      button {
+        font-size: 0.8rem;
+        min-width: auto;
+        grid-row: auto / span 1;
+      }
+    }
+  }
+
+  & > .SchemaTableWhere__toggle {
+    @extend .SchemaTableSide__absolute
+    z-index: 1999;
+    background-color: lighten($positive, 10%);
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    border-radius: 0 0 0 50px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0px 10px rgba(0, 0, 0, 0.24);
+    padding: 10px 0 0 18px;
+    transition: transform 0.3s;
+    transform: scale(0);
+
+    &.SchemaTableWhere__toggle--searching {
+      animation: toggle-pulse 2s infinite;
+      background: lighten($negative, 10%);
+    }
+
+    & > .q-icon {
+      position: absolute;
+      transition: all .3s;
+    }
+
+    & > #search {
+      transform: scale(1) rotate(0);
+    }
+
+    & > #arrow {
+      transform: scale(0);
+    }
+  }
+
+  .SchemaTableWhere {
+    & > .SchemaTableWhere__side {
+      height: 100vh;
+    }
+
+    .SchemaTableWhere__form {
+      height: calc(100vh - 55px);
+    }
+
+    &.SchemaTableWhere--open {
+      & > .SchemaTableWhere__backdrop {
+        height: calc(100vh - 1px);
+      }
+    }
+  }
+
+  &.SchemaTableWhere--ready {
+    & > .SchemaTableWhere__toggle {
+      transform: scale(1);
+    }
+  }
+}
+
+/* end QTableWhere */
+
+/* ####################### HEIGHT MANAGEMENT ####################### */
+
+.SchemaTable {
+  height: calc(100vh - 135px);
+
+  & > .q-table__middle {
+    height: calc(100vh - 245px);
+  }
+
+  &.fullscreen {
+    & > .q-table__middle {
+      height: calc(100vh - 245px);
+    }
+  }
+}
+
+.DashboardLayout--modal {
+  .SchemaTable {
+    height: calc(100vh - 80px);
+
+    & > .q-table__middle {
+      height: calc(100vh - 190px);
+    }
+
+    &.fullscreen {
+      & > .q-table__middle {
+        height: calc(100vh - 190px);
+      }
+    }
+  }
+}
+
+@media (max-width 768px) {
+  .SchemaTable {
+    height: calc(100vh - 115px);
+
+    & > .q-table__middle {
+      height: calc(100vh - 225px);
+    }
+
+    &.fullscreen {
+      & > .q-table__middle {
+        height: calc(100vh - 225px);
+      }
+    }
+  }
+
+  .DashboardLayout--modal {
+    .SchemaTable {
+      height: calc(100vh - 70px);
+
+      & > .q-table__middle {
+        height: calc(100vh - 180px);
+      }
+
+      &.fullscreen {
+        & > .q-table__middle {
+          height: calc(100vh - 180px);
+        }
+      }
+    }
+  }
+}
+
+
+.SchemaTable__selector__popup {
+  min-width: 200px !important;
+}
+

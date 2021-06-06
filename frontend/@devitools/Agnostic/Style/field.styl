@@ -1,0 +1,89 @@
+@import '~src/css/quasar.variables.styl'
+
+.form {
+  min-width: 260px;
+  width: 100%;
+
+  .field {
+    width: 100%;
+    padding: 5px;
+  }
+
+  &.no-padding {
+    padding: 0 !important;
+
+    .field {
+      padding: 0 !important;
+    }
+  }
+
+  &.form-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+
+    .field {
+      for width in (1..20) {
+        &.width-{width * 5} {
+          max-width: width * 5%;
+        }
+      }
+    }
+  }
+
+  &.form-grid {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+
+    .field {
+      grid-column: auto / span 100;
+      for index in (1..100) {
+        &.width-{index} {
+          grid-column: auto / span index;
+        }
+      }
+
+      for index in (1..100) {
+        &.start-{index} {
+          grid-column-start: index;
+        }
+      }
+
+      for index in (1..100) {
+        &.end-{index} {
+          grid-column-end: index;
+        }
+      }
+
+      for index in (1..10) {
+        &.height-{index} {
+          grid-row: auto / span index;
+        }
+      }
+    }
+
+    for index in (1..50) {
+      &.gap-{index} {
+        grid-row-gap: index px;
+      }
+    }
+  }
+}
+
+@media (max-width $break) {
+  .form {
+    &.form-flex:not(.no-break) .field:not(.no-break) {
+      max-width: 100% !important;
+    }
+  }
+}
+
+
+@media (max-width $break) {
+  .form {
+    &.form-grid:not(.no-break) .field:not(.no-break) {
+      grid-column: auto / span 100 !important;
+      grid-row: auto / span 1;
+    }
+  }
+}

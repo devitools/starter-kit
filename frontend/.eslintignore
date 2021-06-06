@@ -1,0 +1,13 @@
+/.quasar
+/.devitools
+/@devitools
+
+/dist
+/node_modules
+/src-bex/www
+/src-capacitor
+/src-cordova
+/src-ssr
+
+.eslintrc.js
+quasar.conf.js

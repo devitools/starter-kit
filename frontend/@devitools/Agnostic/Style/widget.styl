@@ -1,0 +1,37 @@
+
+.widgets {
+  display: flex;
+  margin: 0 0 10px 0;
+  flex-wrap: nowrap;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &.widgets--fluid {
+    flex-wrap: wrap;
+  }
+
+  & > .widget {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding-right: 10px;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    & > .widget__label {
+      padding: 8px 4px 8px 8px;
+      flex-grow: 1
+    }
+
+    & > .widget__value {
+      padding: 8px 8px 8px 0
+      text-align: right;
+      flex-grow: 1;
+    }
+  }
+}

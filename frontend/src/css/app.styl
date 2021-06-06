@@ -1,0 +1,90 @@
+// app global css in Stylus form
+@import "agnostic.styl"
+
+.bg-default {
+  background-color: #ffffff;
+  color: #515151 !important;
+}
+
+.text-default {
+  color: #515151 !important;
+}
+
+/**
+ * Fixes
+ */
+
+@media (min-width: 1920px) {
+  body {
+    background: #f5f5f5;
+  }
+
+  .DashboardLayout {
+    width: 1920px;
+  }
+}
+
+@media (max-width: 359px) {
+  .DashboardLayout .DashboardLayout__header .DashboardLayout__header_logo {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .q-table__top {
+    padding: 6px !important;
+  }
+
+  .SchemaTable > .q-table__top > #selector {
+    width: 150px;
+    min-width: 150px !important;
+    display: block;
+    margin: 0 6px 0 0;
+  }
+
+  .SchemaTable > .q-table__top > #search {
+    width: calc(100vw - 210px) !important;
+    margin: 0;
+
+    &.q-field {
+      transition: none !important;
+    }
+  }
+}
+
+/**
+ * Animations
+ */
+.animation-shake {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+}
+
+.text-grey-default {
+  color: #656565;
+}
+
+.has-error {
+  background: #fff2f2;
+  border-radius: 4px;
+}

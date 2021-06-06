@@ -58,7 +58,10 @@ class BootstrapSeeder extends Seeder
                     'admin/user.edit',
                     'admin/user.destroy',
                     'admin/user.trash',
-                    'admin/user.profile',
+                    // admin/user
+                    'admin/user.action',
+                    'admin/user.index',
+                    'admin/user.view',
                 ]
             ]
         );
@@ -69,8 +72,8 @@ class BootstrapSeeder extends Seeder
             [
                 'profileId' => Uuid::fromString($adminProfileId)->getBytes(),
                 'name' => 'Admin',
-                'email' => 'root@welog.com',
-                'password' => 'aq1sw2de3',
+                'email' => env('APP_DEV_USERNAME', 'root@devi.tools'),
+                'password' => env('APP_DEV_PASSWORD', 'aq1sw2de3'),
                 'active' => true,
             ]
         );

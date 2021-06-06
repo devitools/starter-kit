@@ -1,57 +1,81 @@
+<div align="center">
+  <img alt="Devitools logo" src="https://devi.tools/images/logo-horizontal.png" />
+</div>
+<br>
+<br>
 <p align="center">
-  <img
-    src="https://raw.githubusercontent.com/devitools/laravel-quasar-starter-kit/master/cover.jpg"
-    alt="cover"
-  />
+  <a href="#" style="text-decoration: none">
+    <img alt="License" src="https://img.shields.io/github/license/devitools/starter-kit?color=34CB79" />
+  </a>
+  <a href="https://github.com/devitools/starter-kit/issues" style="text-decoration: none" target="_blank">
+    <img alt="Issues" src="https://img.shields.io/github/issues/devitools/starter-kit?color=34CB79" />
+  </a>
+    <a href="https://github.com/devitools/starter-kit/graphs/contributors" style="text-decoration: none" target="_blank">
+    <img src="https://img.shields.io/github/contributors/devitools/starter-kit?color=34CB79" />
+  </a>
+  <a href="#" style="text-decoration: none">
+    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/devitools/starter-kit?color=34CB79" />
+  </a>
 </p>
 
-# Devitools "Laravel-Quasar" Starter Kit
+<p align="center">
+  <a href="https://github.com/devitools/starter-kit/stargazers" style="text-decoration: none" target="_blank">
+    <img alt="Github Stars" src="https://img.shields.io/github/stars/devitools/starter-kit?style=social" />
+  </a>
+  <a href="https://github.com/devitools/starter-kit/network/members" style="text-decoration: none" target="_blank">
+    <img alt="Github Forks" src="https://img.shields.io/github/forks/devitools/starter-kit?style=social" />
+  </a>
+  <a href="https://twitter.com/devitools" style="text-decoration: none" target="_blank">
+    <img alt="Twitter" src="https://img.shields.io/twitter/follow/devitools?label=Twitter&style=social" />
+  </a>
+</p>
 
-## Get Started
+<p align="center">
+  <a href="https://github.com/devitools/starter-kit/tags" style="text-decoration: none" target="_blank">
+    <img alt="Github Tags" src="https://img.shields.io/github/v/tag/devitools/starter-kit.svg?logo=github" />
+  </a>
+  <a href="https://github.com/devitools/starter-kit/releases" style="text-decoration: none" target="_blank">
+    <img alt="Github Releases" src="https://img.shields.io/github/last-commit/devitools/starter-kit.svg?label=Updated&logo=github&maxAge=600" />
+  </a>
+</p>
 
-Init submodules
-```
-git submodule init
-git submodule update
-```
+<p align="center">
+ <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#contribuir">Contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#+1-documentacao">Documentação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
 
-### Start backend
+## 💻 Projeto
 
-Open the terminal on `laravel` dir and run the command below
-```
-docker-compose up -d
-```
+`// TODO`
 
-Install dependencies
-```
-docker exec -it devitools-nginx bash -c "su -c 'composer install' application"
-```
+## :rocket: Tecnologias
 
-Generate key
-```
-docker exec -it devitools-nginx bash -c "su -c 'php artisan env' application"
-docker exec -it devitools-nginx bash -c "su -c 'php artisan key:generate' application"
-docker exec -it devitools-nginx bash -c "su -c 'php artisan jwt:secret' application"
-```
+Este projeto foi construído utilizando estas tecnologias:
 
-Migrate the database
-```
-docker exec -it devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"
-```
+- [PHP](https://php.net)
+- [Laravel](https://laravel.com)
+- [Quasar](https://quasar.dev)
 
-Stop the backend
-```
-docker-compose down
-```
+## 👍 Contribuir
 
-### Start frontend
+Fique livre para abrir uma [_issue_](https://github.com/devitools/starter-kit/issues).
 
-Open the terminal on `quasar` dir and run the command below
-```
-yarn
-```
+- Abra uma _issue_;
+- Faça um _fork_ do projeto;
+- Crie uma _branch_: `git checkout -b new-feature`
+- Faça suas mudanças;
+- Faça um _commit_ das suas mudanças: `git commit -m '[feature] New feature'`
+- Envie sua versão: `git push origin new-feature`
+- Abra um _pull request_ referenciando o nº da sua _issue_.
 
-After install all dependencies, use the command below to start dev mode
-```
-yarn dev
-```
+Após seu _pull request_ ser aprovado, você pode excluir a sua _branch_.
+
+## 🤔 Documentação
+`// TODO`
+
+## :memo: Licença
+
+Este projeto está sob licença MIT.
