@@ -1,0 +1,51 @@
+{
+  "name": "devitools/adapter-laravel",
+  "type": "package",
+  "license": "MIT",
+  "description": "Devitools Laravel adapter",
+  "minimum-stability": "dev",
+  "keywords": [
+    "php",
+    "laravel",
+    "framework",
+    "api",
+    "devitools"
+  ],
+  "homepage": "https://github.com/devitools/laravel",
+  "version": "4.6.1",
+  "authors": [
+    {
+      "name": "William",
+      "email": "wilcorrea@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-posix": "*",
+    "ext-zip": "*",
+    "doctrine/dbal": "^2.10",
+    "dyrynda/laravel-efficient-uuid": "^4.0",
+    "dyrynda/laravel-model-uuid": "^6.1",
+    "neitanod/forceutf8": "^2.0",
+    "owen-it/laravel-auditing": "^10.0",
+    "php-brasil/collection": "^0.2.5",
+    "phpzm/phpee": "^1.0",
+    "predis/predis": "^1.1",
+    "tymon/jwt-auth": "^1.0",
+    "fruitcake/laravel-cors": "^2.0@dev",
+    "sentry/sentry-laravel": "2.4.2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "Devitools\\": "src/"
+    },
+    "files": [
+      "src/Helper/index.php"
+    ]
+  }
+}
