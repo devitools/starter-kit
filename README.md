@@ -40,9 +40,9 @@
 </p>
 
 <p align="center">
- <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#contribuir">Contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+ <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-contribuir">Contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#+1-documentacao">Documentação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
@@ -55,7 +55,6 @@ _Template_ para iniciar um projeto Devitools utilizando Laravel (PHP) no backend
 
 Este _template_ foi construído utilizando estas tecnologias:
 
-- [PHP](https://php.net)
 - [Laravel](https://laravel.com)
 - [Quasar](https://quasar.dev)
 
@@ -72,22 +71,22 @@ Fique livre para abrir uma [_issue_](https://github.com/devitools/starter-kit/is
 - Abra um _pull request_ referenciando o nº da sua _issue_.
 - Acompanhe o andamento do seu _pull request_.
 
-## 📝 Licença
+## ⚖ Licença
 
-Este projeto está sob licença MIT.
+Este projeto está sob licença MIT. [Clique aqui](./LICENSE.md) para consultá-la.
 
-## 🤔 Documentação
+## 📝 Documentação
 
-Use este guia para preparar seu ambiente de desenvolvimento.
+Use o guia a seguir para preparar seu ambiente de desenvolvimento.
 
 ### 🛠 Backend
 
 É possível configurar o ambiente de desenvolvimento do backend de três formas:
-  - Local;
-  - Docker;
-  - Makefile.
+  - [Local](#-local);
+  - [Docker](#-usando-docker);
+  - [Makefile](#-usando-makefile).
 
-#### Com ambiente local
+#### Local
 
 ```shell
 cd backend
@@ -110,54 +109,95 @@ php artisan key:generate
 ```shell
 php artisan migrate:fresh
 ```
-
+---
 #### 🐋 Usando Docker
 
 ```shell
 cd backend
+```
+
+```shell
 cp .env.example .env
+```
+
+```shell
 cp docker-compose.yml.example docker-compose.yml`
+```
+
+```shell
 docker-compose up -d
+```
+
+```shell
 docker-compose exec devitools-nginx bash -c "su -c 'composer install' application"
+```
+
+```shell
 docker-compose exec devitools-nginx bash -c "su -c 'php artisan key:generate' application"
+```
+
+```shell
 docker-compose exec devitools-nginx bash -c "su -c 'php artisan jwt:secret --force' application"
+```
+
+```shell
 docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"
 ```
 
-edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o  sistema inicial
+Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
+Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
 
-#### ✏ Usando makefile
+---
+#### ⚙ Usando makefile
 
 ```shell
 cd backend
+```
+```shell
 cp .env.example .env
+```
+Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
+Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+```shell
 cp docker-compose.yml.example docker-compose.yml
+```
+```shell
 make init
 ```
 
-edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o
-sistema inicial
-
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
 ### 🎨 Frontend: iniciar o modo de desenvolvimento
 
 #### Usando `yarn`
 
 ```shell
 cd frontend
+```
+```shell
 cp .env.example .env
+```
+Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
+Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+```shell
 yarn
+```
+```shell
 yarn dev
 ```
-
-edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o  sistema inicial
 
 #### Usando `npm`
 
 ```shell
 cd frontend
+```
+```shell
 cp .env.example .env
+```
+Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
+Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+```shell
 npm install
+```
+```shell
 npm run dev
 ```
-
-edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o  sistema inicial
