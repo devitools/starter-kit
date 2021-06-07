@@ -91,13 +91,25 @@ Use este guia para preparar seu ambiente de desenvolvimento.
 
 ```shell
 cd backend
-cp .env.example .env
-composer install
-php artisan key:generate
-php artisan migrate:fresh
 ```
 
-edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema inicial
+```shell
+cp .env.example .env
+```
+Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
+Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+
+```shell
+composer install
+```
+
+```shell
+php artisan key:generate
+```
+
+```shell
+php artisan migrate:fresh
+```
 
 #### 🐋 Usando Docker
 
