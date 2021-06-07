@@ -1,6 +1,6 @@
 {
-  "name": "Devitools App",
-  "short": "devitools",
+  "name": "replace.app.name",
+  "short": "replace.app.short",
   "lang": "pt-br",
   "template": "default",
   "front": {
