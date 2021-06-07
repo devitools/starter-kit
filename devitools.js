@@ -1,4 +1,4 @@
-import Path from 'path'
+const Path = require('path')
 
 /**
  * @param command
@@ -7,7 +7,7 @@ import Path from 'path'
  * @param {string} short
  * @private
  */
-async function update(command, pwd, name, short) {
+async function update (command, pwd, name, short) {
   const files = [
     '.environment/stage/docker-compose.yml',
     '.tevun/hooks/install.sh',
@@ -43,26 +43,22 @@ async function update(command, pwd, name, short) {
  * @param options
  * @return {Promise<void>}
  */
-module.exports = async function(command, pwd, options) {
-  try {
-    command.unlink(Path.resolve(pwd, '.git'))
-    command.unlink(Path.resolve(pwd, 'frontend/@devitools'))
-    command.unlink(Path.resolve(pwd, 'backend/@devitools'))
+module.exports = async function (command, pwd, options) {
+  command.unlink(Path.resolve(pwd, '.git'))
+  command.unlink(Path.resolve(pwd, 'frontend/@devitools'))
+  command.unlink(Path.resolve(pwd, 'backend/@devitools'))
 
-    const { name, short, git } = options
+  const { name, short, git } = options
 
-    await update(command, pwd, name, short)
+  await update(command, pwd, name, short)
 
-    return git
-      .init()
-      .checkoutLocalBranch('main')
-      .add('.devitools.json')
-      .commit('(main)')
-      .submoduleAdd('https://github.com/devitools/quasar', './frontend/@devitools')
-      .submoduleAdd('https://github.com/devitools/laravel', './backend/@devitools')
-      .add('.')
-      .commit('(init)')
-  } catch (error) {
-    command.warn(error)
-  }
+  return git
+    .init()
+    .checkoutLocalBranch('main')
+    .add('.devitools.json')
+    .commit('(main)')
+    .submoduleAdd('https://github.com/devitools/quasar', './frontend/@devitools')
+    .submoduleAdd('https://github.com/devitools/laravel', './backend/@devitools')
+    .add('.')
+    .commit('(init)')
 }
