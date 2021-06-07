@@ -111,6 +111,11 @@ php artisan key:generate
 ```shell
 php artisan migrate:fresh
 ```
+
+Neste ponto já é possível acessar o backend na URL que está configurada no seu ambiente.
+
+Vá para a seção de [frontend](#-frontend) para configurar a outra parte do ambiente de desenvolvimento.
+
 ---
 #### 🐋 Usando Docker
 
@@ -147,6 +152,10 @@ docker-compose exec devitools-nginx bash -c "su -c 'php artisan jwt:secret --for
 docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"
 ```
 
+Neste ponto, caso não tenha sido feita nenhuma modificação nos arquivos de configuração, é possível acessar o backend na URL [http://localhost:8080](http://localhost:8080).
+
+Vá para a seção de [frontend](#-frontend) para configurar a outra parte do ambiente de desenvolvimento.
+
 ---
 #### ⚙ Usando makefile
 
@@ -165,6 +174,10 @@ cp docker-compose.yml.example docker-compose.yml
 make init
 ```
 
+Neste ponto, caso não tenha sido feita nenhuma modificação nos arquivos de configuração, é possível acessar o backend na URL [http://localhost:8080](http://localhost:8080).
+
+Vá para a seção de [frontend](#-frontend) para configurar a outra parte do ambiente de desenvolvimento.
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
 ### 🎨 Frontend
 
@@ -180,14 +193,15 @@ cd frontend
 ```shell
 cp .env.example .env
 ```
-Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
-Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+Caso você tenha mudado as variáveis de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` no backend modifique no `.env` as variáveis `VUE_APP_DEV_USERNAME` e `VUE_APP_DEV_PASSWORD` para usar os mesmos valores informados anteriormente.
 ```shell
 yarn
 ```
 ```shell
 yarn dev
 ```
+
+Ao executar este comando, caso não tenha sido feita nenhuma mudança nas configurações padrão, o navegador abrirá automaticamente a URL [http://localhost:8000](http://localhost:8000).
 
 #### 🖲 Usando `npm`
 
@@ -197,11 +211,13 @@ cd frontend
 ```shell
 cp .env.example .env
 ```
-Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
-Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+Caso você tenha mudado as variáveis de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` no backend modifique no `.env` as variáveis `VUE_APP_DEV_USERNAME` e `VUE_APP_DEV_PASSWORD` para usar os mesmos valores informados anteriormente.
 ```shell
 npm install
 ```
 ```shell
 npm run dev
 ```
+
+Ao executar este comando, caso não tenha sido feita nenhuma mudança nas configurações padrão, o navegador abrirá automaticamente a URL [http://localhost:8000](http://localhost:8000).
+
