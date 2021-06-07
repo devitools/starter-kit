@@ -51,7 +51,7 @@
 
 `// TODO`
 
-## :rocket: Tecnologias
+## 🚀 Tecnologias
 
 Este projeto foi construído utilizando estas tecnologias:
 
@@ -76,6 +76,27 @@ Após seu _pull request_ ser aprovado, você pode excluir a sua _branch_.
 ## 🤔 Documentação
 `// TODO`
 
-## :memo: Licença
+## :notebook: Primeiros passos
+
+### Configurar o backend para o modo de desenvolvimento
+
+#### Com ambiente local
+  - `cp .env.example .env`
+  - `composer install`
+  - `php artisan key:generate`
+  - `php artisan migrate:fresh`
+
+#### Usando docker
+  - `cp .env.example .env`
+  - `cp docker-compose.yml.example docker-compose.yml`
+  - `docker-compose up -d`
+  - `docker-compose exec devitools-nginx bash -c "su -c 'composer install' application"`
+  - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan key:generate' application"`
+  - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"`
+
+#### Usando makefile
+  - `make init`
+
+## 📝 Licença
 
 Este projeto está sob licença MIT.
