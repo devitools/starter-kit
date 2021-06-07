@@ -45,21 +45,25 @@ function update(command, pwd, name, short) {
  * @return {Promise<void>}
  */
 module.exports = async function(command, pwd, options) {
-  command.unlink(Path.resolve(pwd, '.git'))
-  command.unlink(Path.resolve(pwd, 'frontend/@devitools'))
-  command.unlink(Path.resolve(pwd, 'backend/@devitools'))
+  try {
+    command.unlink(Path.resolve(pwd, '.git'))
+    command.unlink(Path.resolve(pwd, 'frontend/@devitools'))
+    command.unlink(Path.resolve(pwd, 'backend/@devitools'))
 
-  const { name, short, git } = options
+    const { name, short, git } = options
 
-  update(command, pwd, name, short)
+    update(command, pwd, name, short)
 
-  await git
-    .init()
-    .checkoutLocalBranch('main')
-    .add('.devitools.json')
-    .commit('(main)')
-    .submoduleAdd('https://github.com/devitools/quasar', './frontend/@devitools')
-    .submoduleAdd('https://github.com/devitools/laravel', './backend/@devitools')
-    .add('.')
-    .commit('(init)')
+    await git
+      .init()
+      .checkoutLocalBranch('main')
+      .add('.devitools.json')
+      .commit('(main)')
+      .submoduleAdd('https://github.com/devitools/quasar', './frontend/@devitools')
+      .submoduleAdd('https://github.com/devitools/laravel', './backend/@devitools')
+      .add('.')
+      .commit('(init)')
+  } catch (error) {
+    command.warn(error)
+  }
 }
