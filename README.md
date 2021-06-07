@@ -126,30 +126,33 @@ cd backend
 ```shell
 cp .env.example .env
 ```
+Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
+Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
 
 ```shell
 cp docker-compose.yml.example docker-compose.yml
 ```
-Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
-Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+As definições do docker vem por padrão com o prefixo 'replace.app.short'. Edite o arquivo `docker-compose.yml` com o 
+nome que for mais conveniente.
+
 ```shell
 docker-compose up -d
 ```
 
 ```shell
-docker-compose exec devitools-nginx bash -c "su -c 'composer install' application"
+docker-compose exec <replace.app.short>-nginx bash -c "su -c 'composer install' application"
 ```
 
 ```shell
-docker-compose exec devitools-nginx bash -c "su -c 'php artisan key:generate' application"
+docker-compose exec <replace.app.short>-nginx bash -c "su -c 'php artisan key:generate' application"
 ```
 
 ```shell
-docker-compose exec devitools-nginx bash -c "su -c 'php artisan jwt:secret --force' application"
+docker-compose exec <replace.app.short>-nginx bash -c "su -c 'php artisan jwt:secret --force' application"
 ```
 
 ```shell
-docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"
+docker-compose exec <replace.app.short>-nginx bash -c "su -c 'php artisan migrate:fresh' application"
 ```
 
 Neste ponto, caso não tenha sido feita nenhuma modificação nos arquivos de configuração, é possível acessar o backend na URL [http://localhost:8080](http://localhost:8080).
