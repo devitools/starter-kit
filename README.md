@@ -78,9 +78,10 @@ Após seu _pull request_ ser aprovado, você pode excluir a sua _branch_.
 
 ### Primeiros passos
 
-#### Backend: configurar para o modo de desenvolvimento
+#### Backend: iniciar o modo de desenvolvimento
 
 ##### Com ambiente local
+  - `cd backend`
   - `cp .env.example .env`
   - edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o 
     usuário e a senha padrão para acessar o sistema inicial
@@ -89,6 +90,7 @@ Após seu _pull request_ ser aprovado, você pode excluir a sua _branch_.
   - `php artisan migrate:fresh`
 
 ##### Usando docker
+  - `cd backend`
   - `cp .env.example .env`
   - edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o
     usuário e a senha padrão para acessar o sistema inicial
@@ -99,9 +101,11 @@ Após seu _pull request_ ser aprovado, você pode excluir a sua _branch_.
   - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"`
 
 ##### Usando makefile
-  - `make env`
-- edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o
-  usuário e a senha padrão para acessar o sistema inicial
+  - `cd backend`
+  - `cp .env.example .env`
+  - edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o
+    usuário e a senha padrão para acessar o sistema inicial
+  - `cp docker-compose.yml.example docker-compose.yml`
   - `make init`
 
 ## 📝 Licença

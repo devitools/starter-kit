@@ -9,15 +9,15 @@ help:  ## Display this help
 
 ##@ Initialize work
 
-env: ## Start a new develop environment
-	cp .env.example .env
-	cp docker-compose.yml.example docker-compose.yml
-
 init: ## Start a new develop environment
-	docker-compose up -d
-	docker-compose exec devitools-nginx bash -c "su -c 'composer install' application"
+	$(MAKE) dev
+	$(MAKE) install
+	$(MAKE) keys
+	$(MAKE) fresh
+
+keys: ## Generate secret keys
 	docker-compose exec devitools-nginx bash -c "su -c 'php artisan key:generate' application"
-	docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"
+	docker-compose exec devitools-nginx bash -c "su -c 'php artisan jwt:secret --force' application"
 
 ##@ Docker actions
 
@@ -41,7 +41,7 @@ migration: ## Create migration file
 migrate: ## Perform migrations
 	docker-compose exec devitools-nginx php artisan migrate
 
-migrate.fresh: ## Perform migrations
+fresh: ## Perform fresh migrations
 	docker-compose exec devitools-nginx php artisan migrate:fresh
 
 rollback: ## Rollback migration
