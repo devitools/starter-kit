@@ -1,9 +1,11 @@
-import { agnostic, auth, app, geo, validation, worker } from '@devitools/Lang/pt-br'
+import { agnostic, app, auth, geo, validation, worker } from '@devitools/Lang/pt-br'
 
 import domains from './domains'
 import menu from './menu'
 import pages from './pages'
 import permissions from './permissions'
+
+const name = process.env.VUE_APP_NAME
 
 const ptBR = {
   agnostic,
@@ -12,6 +14,7 @@ const ptBR = {
   domains,
   geo,
   menu,
+  name,
   pages,
   permissions,
   validation,

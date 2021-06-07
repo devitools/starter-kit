@@ -67,7 +67,7 @@
         v-if="!miniState"
         class="DashboardLayout_drawer_version absolute absolute-bottom full-width q-pt-sm q-pb-sm q-pl-md q-pr-md"
       >
-        <small class="float-left"><i>&copy; Devitools · {{ year }}</i></small>
+        <small class="float-left"><i>&copy; {{ $t('name') }} · {{ year }}</i></small>
         <small class="float-right">
           <i>{{ $lang('pages.dashboard.index.version') }}: </i>
           <b style="font-family: monospace;">{{ version }}</b>

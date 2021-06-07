@@ -1,6 +1,6 @@
 {
-    "name": "Devitools",
-    "short_name": "Devitools",
+    "name": "replace.app.name",
+    "short_name": "replace.app.short",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

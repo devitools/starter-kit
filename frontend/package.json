@@ -1,8 +1,8 @@
 {
-  "name": "devitools",
+  "name": "replace.app.short",
+  "productName": "replace.app.name",
   "version": "0.0.1",
   "description": "The best app ever",
-  "productName": "Devitools App",
   "author": "n",
   "private": true,
   "scripts": {

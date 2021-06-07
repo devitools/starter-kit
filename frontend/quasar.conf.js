@@ -182,8 +182,8 @@ module.exports = configure(function (context) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Devitools Frontend',
-        short_name: 'Devitools',
+        short_name: 'replace.app.short',
+        name: 'replace.app.name',
         description: 'The best app ever',
         display: 'standalone',
         orientation: 'portrait',
@@ -249,7 +249,7 @@ module.exports = configure(function (context) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'devitools'
+        appId: 'replace.app.short'
       },
 
       // More info: https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration

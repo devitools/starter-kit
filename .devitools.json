@@ -1,10 +1,11 @@
 {
-  "lang": [
-    "pt-br"
-  ],
+  "name": "Devitools App",
+  "short": "devitools",
+  "lang": "pt-br",
   "template": "default",
   "front": {
     "type": "quasar",
+    "env": "yarn",
     "root": "/frontend",
     "domains": "/source/domains",
     "views": "/resources/views/dashboard",
@@ -14,6 +15,7 @@
   },
   "back": {
     "type": "laravel",
+    "env": "docker",
     "root": "/backend",
     "domains": "/app/Domains",
     "controllers": "/app/Http/Controllers",

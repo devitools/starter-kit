@@ -23,7 +23,7 @@
         size="1.5em"
         name="keyboard_backspace"
       />
-      Voltar para Devitools
+      Voltar para {{ $t('name') }}
     </QBtn>
   </div>
 </template>

@@ -1,7 +1,6 @@
-import { Loading, Notify } from 'quasar'
-// noinspection ES6CheckImport
 import { register } from 'register-service-worker'
-import $lang from '@devitools/Lang'
+// noinspection ES6PreferShortImport
+import { applyUpdate } from '../src/boot/update'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
@@ -12,62 +11,34 @@ register(process.env.SERVICE_WORKER_FILE, {
   // to ServiceWorkerContainer.register()
   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register#Parameter
 
-  registrationOptions: { scope: './' },
+  registrationOptions: { scope: '/' },
 
   ready () {
-    // console.log('App is being served from cache by a service worker.')
-
-    // Notify.create({ message: $lang('worker.ready.message') })
+    console.log('[pwa] App is being served from cache by a service worker.')
   },
 
-  registered (registration) {
-    // console.log('Service worker has been registered.')
+  registered (/* registration */) {
+    console.log('[pwa] Service worker has been registered.')
+  },
+
+  updatefound (/* registration */) {
+    console.log('[pwa] New content is downloading.')
   },
 
   cached (registration) {
-    // console.log('Content has been cached for offline use.')
+    console.warn('[pwa] Content has been cached for offline use.')
 
-    // Notify.create({ message: $lang('worker.cached.message') })
-  },
-
-  updatefound (registration) {
-    // console.log('New content is downloading.')
+    navigator.serviceWorker.ready.then(() => applyUpdate(registration))
   },
 
   updated (registration) {
-    // console.log('New content is available; please refresh.')
+    console.warn('[pwa] New content is available; please refresh.')
 
-    Notify.create({
-      message: $lang('worker.update.message'),
-      timeout: 0, // You can adjust this, use 0 for infinite
-      closeBtn: $lang('worker.update.close'),
-      actions: [
-        {
-          label: $lang('worker.update.confirm'),
-          icon: 'get_app',
-          color: 'white',
-          handler () {
-            navigator.serviceWorker.addEventListener('controllerchange', () => {
-              window.location.reload()
-            })
-            // This process if rather fast generally, but for better experience show "Loading"
-            Loading.show({
-              delay: 0,
-              message: $lang('worker.update.updating')
-            })
-            try {
-              registration.waiting.postMessage({ type: 'SKIP_WAITING' })
-            } catch (e) {
-              // silent
-            }
-          }
-        }
-      ]
-    })
+    navigator.serviceWorker.ready.then(() => applyUpdate(registration))
   },
 
   offline () {
-    // console.log('No internet connection found. App is running in offline mode.')
+    console.log('[pwa] No internet connection found. App is running in offline mode.')
   },
 
   error (err) {
