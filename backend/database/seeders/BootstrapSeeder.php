@@ -58,10 +58,10 @@ class BootstrapSeeder extends Seeder
                     'admin/user.edit',
                     'admin/user.destroy',
                     'admin/user.trash',
-                    // admin/user
-                    'admin/user.action',
-                    'admin/user.index',
-                    'admin/user.view',
+                    // admin/notification
+                    'admin/notification.action',
+                    'admin/notification.index',
+                    'admin/notification.view',
                 ]
             ]
         );

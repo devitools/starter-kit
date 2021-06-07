@@ -33,7 +33,7 @@ class NotificationsCreate extends TableCreate
         $table->dateTime('readAt');
 
         $table->foreign('userId', 'notifications_userId')
-            ->references('uuid')
+            ->references(__BINARY_KEY__)
             ->on('users')
             ->onDelete('cascade');
     }

@@ -1,0 +1,44 @@
+#php
+
+declare(strict_types=1);
+
+namespace App\Domains\\{{namespace}};
+
+use Devitools\Agnostic\Schema;
+
+/**
+ * Class {{entity}}
+ *
+ * @package App\Domains\\{{namespace}}
+ */
+class {{entity}} extends Schema
+{
+    /**
+     * The resource associated with the schema.
+     *
+     * @return string
+     */
+    public static function resource(): string
+    {
+        return '{{[entity.collection]}}';
+    }
+
+    /**
+     * @return string
+     */
+    public function domain(): string
+    {
+        return '{{[domain.lower]}}/{{[entity.lower]}}';
+    }
+
+    /**
+     * Build the schema fields and actions.
+     *
+     * @return void
+     */
+    public function construct(): void
+    {
+        $this->addField('name')
+            ->validationRequired();
+    }
+}

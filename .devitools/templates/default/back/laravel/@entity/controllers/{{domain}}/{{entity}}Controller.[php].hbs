@@ -1,0 +1,26 @@
+#php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers\\{{namespace}};
+
+use Devitools\Http\Controllers\AbstractRestController;
+use App\Domains\\{{namespace}}\\{{entity}}\\{{entity}}Repository;
+
+/**
+ * Class {{entity}}Controller
+ *
+ * @package App\Http\Controllers\\{{namespace}}
+ */
+class {{entity}}Controller extends AbstractRestController
+{
+    /**
+     * {{entity}}Controller constructor.
+     *
+     * @param {{entity}}Repository $repository
+     */
+    public function __construct({{entity}}Repository $repository)
+    {
+        parent::__construct($repository);
+    }
+}

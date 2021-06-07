@@ -6,9 +6,9 @@ use Devitools\Database\Migration\TableCreate;
 use Devitools\Database\Table;
 
 /**
- * Class UsersCreateTable
+ * Class UsersCreate
  */
-class UsersCreateTable extends TableCreate
+class UsersCreate extends TableCreate
 {
     /**
      * @return string
@@ -35,9 +35,9 @@ class UsersCreateTable extends TableCreate
         $table->string('birthdate')->nullable();
         $table->string('photo')->nullable();
 
-        $table->efficientUuid('profileId')->nullable();
-        $table->foreign('profileId', 'usersProFileId')
-            ->references('uuid')
+        $table->efficientUuid('profile_id')->nullable();
+        $table->foreign('profile_id', 'usersProFileId')
+            ->references(__BINARY_KEY__)
             ->on('profiles')
             ->onDelete('restrict');
     }

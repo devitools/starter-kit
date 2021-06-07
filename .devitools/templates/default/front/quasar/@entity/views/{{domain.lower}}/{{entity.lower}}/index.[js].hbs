@@ -1,0 +1,13 @@
+export { domain } from 'source/domains/{{domain}}/{{entity}}/settings'
+
+/** @type {string} */
+export const path = '/dashboard/{{[domain.lower]}}/{{[entity.lower]}}'
+
+/** @type {string} */
+export const icon = '{{[entity.icon]}}'
+
+/** @type {function} */
+export const table = () => import('resources/views/dashboard/{{[domain.lower]}}/{{[entity.lower]}}/{{entity}}Table.vue')
+
+/** @type {function} */
+export const form = () => import('resources/views/dashboard/{{[domain.lower]}}/{{[entity.lower]}}/{{entity}}Form.vue')

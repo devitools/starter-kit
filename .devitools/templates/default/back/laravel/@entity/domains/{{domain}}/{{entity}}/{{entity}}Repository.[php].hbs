@@ -1,0 +1,31 @@
+#php
+
+declare(strict_types=1);
+
+namespace App\Domains\\{{namespace}}\\{{entity}};
+
+use Devitools\Persistence\AbstractRepository;
+use App\Domains\\{{namespace}}\\{{entity}};
+
+/**
+ * Class {{entity}}Repository
+ *
+ * @package App\Domains\\{{namespace}}\\{{entity}}
+ */
+class {{entity}}Repository extends AbstractRepository
+{
+    /**
+     * The entity class name used in repository
+     *
+     * @var string
+     */
+    protected string $prototype = {{entity}}::class;
+
+    /**
+     * @return array
+     */
+    public function getFilterable(): array
+    {
+        return ['uuid', 'name'];
+    }
+}

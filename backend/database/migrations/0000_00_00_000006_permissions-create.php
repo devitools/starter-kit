@@ -30,7 +30,7 @@ class PermissionsCreate extends TableCreate
         $table->string('namespace');
 
         $table->foreign('profileId', 'permissions_profileId')
-            ->references('uuid')
+            ->references(__BINARY_KEY__)
             ->on('profiles')
             ->onDelete('cascade');
     }
