@@ -77,6 +77,8 @@ Este projeto está sob licença MIT. [Clique aqui](./LICENSE.md) para consultá-
 
 ## 📝 Documentação
 
+Para baixar este template use as opções de clone do Github ou use o [Devitools CLI](https://github.com/devitools/cli).
+
 Use o guia a seguir para preparar seu ambiente de desenvolvimento.
 
 ### 🛠 Backend
