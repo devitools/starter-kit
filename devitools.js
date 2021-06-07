@@ -1,6 +1,5 @@
 import Path from 'path'
 
-
 /**
  * @param command
  * @param {string} pwd
@@ -8,7 +7,7 @@ import Path from 'path'
  * @param {string} short
  * @private
  */
-function update(command, pwd, name, short) {
+async function update(command, pwd, name, short) {
   const files = [
     '.environment/stage/docker-compose.yml',
     '.tevun/hooks/install.sh',
@@ -52,9 +51,9 @@ module.exports = async function(command, pwd, options) {
 
     const { name, short, git } = options
 
-    update(command, pwd, name, short)
+    await update(command, pwd, name, short)
 
-    await git
+    return git
       .init()
       .checkoutLocalBranch('main')
       .add('.devitools.json')
