@@ -98,6 +98,7 @@ Após seu _pull request_ ser aprovado, você pode excluir a sua _branch_.
   - `docker-compose up -d`
   - `docker-compose exec devitools-nginx bash -c "su -c 'composer install' application"`
   - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan key:generate' application"`
+  - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan jwt:secret --force' application"`
   - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"`
 
 ##### Usando makefile
