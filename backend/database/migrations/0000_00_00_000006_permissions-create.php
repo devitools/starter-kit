@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Domains\Admin\Permission;
+use App\Domains\Admin\Profile;
 use Devitools\Database\Migration\TableCreate;
 use Devitools\Database\Table;
 
@@ -15,7 +17,7 @@ class PermissionsCreate extends TableCreate
      */
     protected function table(): string
     {
-        return 'permissions';
+        return Permission::resource();
     }
 
     /**
@@ -25,13 +27,13 @@ class PermissionsCreate extends TableCreate
      */
     protected function withStatements(Table $table): void
     {
-        $table->efficientUuid('profileId');
+        $table->efficientUuid(config('devitools.auth.profileId', 'profileId'));
 
         $table->string('namespace');
 
-        $table->foreign('profileId', 'permissions_profileId')
+        $table->foreign(config('devitools.auth.profileId', 'profileId'), 'permissions_profileId')
             ->references(__BINARY_KEY__)
-            ->on('profiles')
+            ->on(Profile::resource())
             ->onDelete('cascade');
     }
 }

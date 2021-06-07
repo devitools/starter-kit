@@ -73,27 +73,29 @@
 
         <hr light>
 
-        <div
-          class="AuthSignIn__recaptcha flex justify-center q-pt-xs q-pb-sm"
-          :class="{
-            'AuthSignIn__recaptcha--invalid animation-shake':
-              $v.record.recaptcha.$error,
-          }"
-        >
-          <vue-recaptcha
-            ref="recaptcha"
-            :sitekey="siteKey"
-            :load-recaptcha-script="true"
-            @verify="onVerify"
-            @expired="onExpired"
-          />
-        </div>
-        <p
-          v-if="$v.record.recaptcha.$error"
-          class="text-center text-red"
-        >
-          {{ $lang("pages.auth.signIn.errorRecaptcha") }}
-        </p>
+        <template v-if="siteKey">
+          <div
+            class="AuthSignIn__recaptcha flex justify-center q-pt-xs q-pb-sm"
+            :class="{
+              'AuthSignIn__recaptcha--invalid animation-shake':
+                $v.record.recaptcha.$error,
+            }"
+          >
+            <vue-recaptcha
+              ref="recaptcha"
+              :sitekey="siteKey"
+              :load-recaptcha-script="true"
+              @verify="onVerify"
+              @expired="onExpired"
+            />
+          </div>
+          <p
+            v-if="$v.record.recaptcha.$error"
+            class="text-center text-red"
+          >
+            {{ $lang("pages.auth.signIn.errorRecaptcha") }}
+          </p>
+        </template>
 
         <div class="q-pa-sm">
           <QBtn

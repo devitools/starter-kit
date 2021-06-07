@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Domains\Admin\Profile;
+use App\Domains\Admin\User;
 use Devitools\Database\Migration\TableCreate;
 use Devitools\Database\Table;
 
@@ -15,7 +17,7 @@ class UsersCreate extends TableCreate
      */
     protected function table(): string
     {
-        return 'users';
+        return User::resource();
     }
 
     /**
@@ -35,10 +37,10 @@ class UsersCreate extends TableCreate
         $table->string('birthdate')->nullable();
         $table->string('photo')->nullable();
 
-        $table->efficientUuid('profile_id')->nullable();
-        $table->foreign('profile_id', 'usersProFileId')
+        $table->efficientUuid(config('devitools.auth.profileId', 'profileId'))->nullable();
+        $table->foreign(config('devitools.auth.profileId', 'profileId'), 'users_proFileId')
             ->references(__BINARY_KEY__)
-            ->on('profiles')
+            ->on(Profile::resource())
             ->onDelete('restrict');
     }
 }

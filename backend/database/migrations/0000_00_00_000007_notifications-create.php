@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Domains\Admin\Notification;
+use App\Domains\Admin\User;
 use Devitools\Database\Migration\TableCreate;
 use Devitools\Database\Table;
 
@@ -15,7 +17,7 @@ class NotificationsCreate extends TableCreate
      */
     protected function table(): string
     {
-        return 'notifications';
+        return Notification::resource();
     }
 
     /**
@@ -34,7 +36,7 @@ class NotificationsCreate extends TableCreate
 
         $table->foreign('userId', 'notifications_userId')
             ->references(__BINARY_KEY__)
-            ->on('users')
+            ->on(User::resource())
             ->onDelete('cascade');
     }
 }

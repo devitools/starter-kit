@@ -70,7 +70,7 @@ class BootstrapSeeder extends Seeder
         # <USERS>
         UserRepository::instance()->create(
             [
-                'profileId' => Uuid::fromString($adminProfileId)->getBytes(),
+                config('devitools.auth.profileId', 'profileId') => Uuid::fromString($adminProfileId)->getBytes(),
                 'name' => 'Admin',
                 'email' => env('APP_DEV_USERNAME', 'root@devi.tools'),
                 'password' => env('APP_DEV_PASSWORD', 'aq1sw2de3'),

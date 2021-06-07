@@ -45,7 +45,7 @@
               </template>
             </QInput>
 
-            <template v-if="step === 1">
+            <template v-if="step === 1 && siteKey">
               <div
                 class="AuthRecoverPassword__recaptcha flex justify-center q-pt-xs q-pb-sm"
                 :class="{ 'AuthRecoverPassword__recaptcha--invalid animation-shake': $v.record.recaptcha.$error }"

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Domains\Admin\Profile;
 use Devitools\Database\Migration\TableCreate;
 use Devitools\Database\Table;
 
@@ -15,7 +16,7 @@ class ProfilesCreate extends TableCreate
      */
     protected function table(): string
     {
-        return 'profiles';
+        return Profile::resource();
     }
 
     /**
