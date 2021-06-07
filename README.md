@@ -121,9 +121,10 @@ cp .env.example .env
 ```
 
 ```shell
-cp docker-compose.yml.example docker-compose.yml`
+cp docker-compose.yml.example docker-compose.yml
 ```
-
+Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
+Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
 ```shell
 docker-compose up -d
 ```
@@ -144,9 +145,6 @@ docker-compose exec devitools-nginx bash -c "su -c 'php artisan jwt:secret --for
 docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"
 ```
 
-Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
-Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
-
 ---
 #### ⚙ Usando makefile
 
@@ -166,9 +164,13 @@ make init
 ```
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
-### 🎨 Frontend: iniciar o modo de desenvolvimento
+### 🎨 Frontend
 
-#### Usando `yarn`
+É possível configurar o ambiente de desenvolvimento do frontend de duas formas:
+- [Yarn](#-usando-yarn);
+- [NPM](#-usando-npm).
+
+#### 🖱 Usando `yarn`
 
 ```shell
 cd frontend
@@ -185,7 +187,7 @@ yarn
 yarn dev
 ```
 
-#### Usando `npm`
+#### 🖲 Usando `npm`
 
 ```shell
 cd frontend
