@@ -88,7 +88,7 @@ Use o guia a seguir para preparar seu ambiente de desenvolvimento.
   - [Docker](#-usando-docker);
   - [Makefile](#-usando-makefile).
 
-#### 🔰 🏡 Local
+#### 🏡 Local
 
 ```shell
 cd backend
