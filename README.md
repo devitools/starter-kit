@@ -76,25 +76,32 @@ Após seu _pull request_ ser aprovado, você pode excluir a sua _branch_.
 ## 🤔 Documentação
 `// TODO`
 
-## :notebook: Primeiros passos
+### Primeiros passos
 
-### Configurar o backend para o modo de desenvolvimento
+#### Backend: configurar para o modo de desenvolvimento
 
-#### Com ambiente local
+##### Com ambiente local
   - `cp .env.example .env`
+  - edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o 
+    usuário e a senha padrão para acessar o sistema inicial
   - `composer install`
   - `php artisan key:generate`
   - `php artisan migrate:fresh`
 
-#### Usando docker
+##### Usando docker
   - `cp .env.example .env`
+  - edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o
+    usuário e a senha padrão para acessar o sistema inicial
   - `cp docker-compose.yml.example docker-compose.yml`
   - `docker-compose up -d`
   - `docker-compose exec devitools-nginx bash -c "su -c 'composer install' application"`
   - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan key:generate' application"`
   - `docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"`
 
-#### Usando makefile
+##### Usando makefile
+  - `make env`
+- edite os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o
+  usuário e a senha padrão para acessar o sistema inicial
   - `make init`
 
 ## 📝 Licença

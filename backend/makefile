@@ -9,9 +9,12 @@ help:  ## Display this help
 
 ##@ Initialize work
 
+env: ## Start a new develop environment
+	cp .env.example .env
+	cp docker-compose.yml.example docker-compose.yml
+
 init: ## Start a new develop environment
 	docker-compose up -d
-	docker-compose exec devitools-nginx bash -c "cp .env.example .env && cp docker-compose.yml.example docker-compose.yml"
 	docker-compose exec devitools-nginx bash -c "su -c 'composer install' application"
 	docker-compose exec devitools-nginx bash -c "su -c 'php artisan key:generate' application"
 	docker-compose exec devitools-nginx bash -c "su -c 'php artisan migrate:fresh' application"
