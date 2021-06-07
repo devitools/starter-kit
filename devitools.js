@@ -8,9 +8,9 @@ module.exports = async function(command, git) {
     .init()
     .checkoutLocalBranch('main')
     .add('.devitools.json')
-    .commit('init')
+    .commit('(main)')
     .submoduleAdd('https://github.com/devitools/quasar', './frontend/@devitools')
     .submoduleAdd('https://github.com/devitools/laravel', './backend/@devitools')
     .add('.')
-    .commit('init')
+    .commit('(init)')
 }
