@@ -81,7 +81,7 @@ Para baixar este template use as opções de clone do Github ou use o [Devitools
 
 Use o guia a seguir para preparar seu ambiente de desenvolvimento.
 
-### Clonar o projeto e inicialiar o git
+### ⌨️ Clonar o projeto e inicialiar o git
 
 Para clonar esta branch é necessário usar o argumento `-b` no comando clone informando o nome da branch (templates/laravel-quasar).
 Confira um exemplo abaixo.
@@ -185,14 +185,18 @@ Vá para a seção de [frontend](#-frontend) para configurar a outra parte do am
 ```shell
 cd backend
 ```
+
 ```shell
 cp .env.example .env
 ```
+
 Opcionalmente você pode editar no `.env` os valores de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` para definir o usuário e a senha padrão para acessar o sistema.
 Por padrão os valores destas variáveis serão respectivamente `root@devi.tools` e `aq1sw2de3`.
+
 ```shell
 cp docker-compose.yml.example docker-compose.yml
 ```
+
 ```shell
 make init
 ```
@@ -213,13 +217,17 @@ Vá para a seção de [frontend](#-frontend) para configurar a outra parte do am
 ```shell
 cd frontend
 ```
+
 ```shell
 cp .env.example .env
 ```
+
 Caso você tenha mudado as variáveis de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` no backend modifique no `.env` as variáveis `VUE_APP_DEV_USERNAME` e `VUE_APP_DEV_PASSWORD` para usar os mesmos valores informados anteriormente.
+
 ```shell
 yarn
 ```
+
 ```shell
 yarn dev
 ```
@@ -231,13 +239,17 @@ Ao executar este comando, caso não tenha sido feita nenhuma mudança nas config
 ```shell
 cd frontend
 ```
+
 ```shell
 cp .env.example .env
 ```
+
 Caso você tenha mudado as variáveis de `APP_DEV_USERNAME` e `APP_DEV_PASSWORD` no backend modifique no `.env` as variáveis `VUE_APP_DEV_USERNAME` e `VUE_APP_DEV_PASSWORD` para usar os mesmos valores informados anteriormente.
+
 ```shell
 npm install
 ```
+
 ```shell
 npm run dev
 ```
