@@ -81,6 +81,23 @@ Para baixar este template use as opções de clone do Github ou use o [Devitools
 
 Use o guia a seguir para preparar seu ambiente de desenvolvimento.
 
+### Clonar o projeto e inicialiar o git
+
+Para clonar esta branch é necessário usar o argumento `-b` no comando clone informando o nome da branch (templates/laravel-quasar).
+Confira um exemplo abaixo.
+```shell
+git clone -b templates/laravel-quasar https://github.com/devitools/starter-kit.git
+```
+
+Após fazer o clone é preciso inicialiazar os sub-módulos que irão usar os recursos do [@devitools](https://devi.tools).
+Use os comandos a seguir para providenciar isso.
+```shell
+git submodule sync --recursive
+```
+```shell
+git submodule update --init --recursive
+```
+
 ### 🛠 Backend
 
 É possível configurar o ambiente de desenvolvimento do backend de três formas:
@@ -109,6 +126,10 @@ php artisan key:generate
 ```
 
 ```shell
+php artisan jwt:secret --force' application
+```
+
+```shell
 php artisan migrate:fresh
 ```
 
@@ -132,8 +153,7 @@ Por padrão os valores destas variáveis serão respectivamente `root@devi.tools
 ```shell
 cp docker-compose.yml.example docker-compose.yml
 ```
-As definições do docker vem por padrão com o prefixo 'replace.app.short'. Edite o arquivo `docker-compose.yml` com o 
-nome que for mais conveniente.
+As definições do docker vem por padrão com o prefixo 'replace.app.short'. Edite o arquivo `docker-compose.yml` com o nome que for mais conveniente.
 
 ```shell
 docker-compose up -d
