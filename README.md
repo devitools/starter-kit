@@ -126,7 +126,7 @@ php artisan key:generate
 ```
 
 ```shell
-php artisan jwt:secret --force' application
+php artisan jwt:secret --force
 ```
 
 ```shell
