@@ -1,0 +1,52 @@
+on: [pull_request]
+name: Pull Request CI
+jobs:
+  qa:
+    name: Quality Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Installing composer dependencies
+        uses: php-actions/composer@v5
+        with:
+          php_version: 7.4
+          version: 2
+          php_extensions: zip pcntl
+
+      - name: PHP Code Sniffer
+        run: composer run phpcs
+
+  tests:
+    name: PHP Unit
+    needs: [qa]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Installing composer dependencies
+        uses: php-actions/composer@v5
+        with:
+          php_version: 7.4
+          version: 2
+          php_extensions: zip xdebug pcntl
+
+      - name: Creating PHPUnit configuration file
+        run: cp tests/phpunit.xml.sample tests/phpunit.xml
+
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@v2
+        with:
+          configuration: tests/phpunit.xml
+          args: --testdox
+
+      - name: PHPUnit Coverage
+        uses: php-actions/phpunit@v2
+        with:
+          php_extensions: xdebug
+          configuration: tests/phpunit.xml
+          args: --coverage-text --colors=never
+        env:
+          XDEBUG_MODE: coverage

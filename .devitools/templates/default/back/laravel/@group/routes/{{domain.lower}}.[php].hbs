@@ -1,0 +1,11 @@
+<?php
+
+declare(strict_types=1);
+
+// use App\Http\Controllers\\{{namespace}}\ExampleController;
+use Devitools\Http\Routing\Router;
+
+Router::restricted()->group(static function () {
+  // example:
+  // Router::provide('/{{[domain.lower]}}/example', ExampleController::class);
+});

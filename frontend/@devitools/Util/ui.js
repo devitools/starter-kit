@@ -1,0 +1,147 @@
+import Vue from 'vue'
+
+/**
+ * @param {string} name
+ * @param {any} component
+ */
+export const register = (name, component) => {
+  Vue.component(name, component)
+}
+
+/**
+ * @param {Element} element
+ * @param {number} duration
+ */
+export const scrollUp = (element, duration = 256) => {
+  if (!element || typeof element !== 'object') {
+    return
+  }
+  let counter = element.scrollTop
+  scroller(element, (options) => {
+    options.scrollCount += Math.PI / (duration / (options.newTimestamp - options.oldTimestamp))
+    if (options.scrollCount >= Math.PI) {
+      element.scrollTo(0, 0)
+      return
+    }
+    if (counter <= 0) {
+      return
+    }
+    counter = counter - duration / 10
+    return Math.round(counter)
+  })
+}
+
+/**
+ * @param {Element} element
+ * @param {number} duration
+ */
+export const scrollDown = (element, duration = 256) => {
+  if (!element || typeof element !== 'object') {
+    return
+  }
+  const max = element.scrollHeight
+  let counter = element.scrollTop
+  scroller(element, (options) => {
+    options.scrollCount += Math.PI / (duration / (options.newTimestamp - options.oldTimestamp))
+    if (options.scrollCount >= Math.PI) {
+      element.scrollTo(0, max)
+      return
+    }
+    if (counter >= max) {
+      return
+    }
+    counter = counter + duration / 10
+    return Math.round(counter)
+  })
+}
+
+/**
+ * @param {Element} element
+ * @param {function} factor
+ */
+export const scroller = (element, factor) => {
+  const options = {
+    scrollCount: 0,
+    oldTimestamp: performance.now(),
+    newTimestamp: 0
+  }
+
+  const step = (newTimestamp) => {
+    options.newTimestamp = newTimestamp
+    const value = factor(options)
+    if (!value) {
+      return
+    }
+    element.scrollTo(0, value)
+    options.oldTimestamp = newTimestamp
+    window.requestAnimationFrame(step)
+  }
+
+  window.requestAnimationFrame(step)
+}
+
+/**
+ * @returns {string}
+ */
+export const color = () => {
+  const letters = '0123456789ABCDEF'
+  const matches = []
+  for (let i = 0; i < 6; i++) {
+    matches.push(letters[Math.floor(Math.random() * 16)])
+  }
+  return `#${matches.join('')}`
+}
+
+/**
+ * @param {string|number} value
+ * @param {boolean} disabled
+ * @return {string|*}
+ */
+export const disable = (value, disabled = false) => {
+  if (disabled === true) {
+    return `<span class="disabled">${value}</span>`
+  }
+  return value
+}
+
+/**
+ * @param {string} value
+ * @param {number} length
+ * @param {string} suffix
+ * @return {string|*}
+ */
+export const ellipsis = (value, length = 30, suffix = '...') => {
+  if (value.length < length) {
+    return value
+  }
+  return value.substring(0, length) + suffix
+}
+
+/**
+ * @param {string, string[]} value
+ * @return {string}
+ */
+export function classify (value) {
+  if (typeof value === 'string') {
+    return value
+  }
+  if (Array.isArray(value)) {
+    return value.join(' ')
+  }
+  return ''
+}
+
+/**
+ * @param {string, Record<string, string>} value
+ * @return {string}
+ */
+export function stylize (value) {
+  if (typeof value === 'string') {
+    return value
+  }
+  if (typeof value === 'object') {
+    const convertObjectToString = (styles, [selector, style]) => `${styles}${selector}: ${style};`
+    return Object.entries(value).reduce(convertObjectToString, '')
+  }
+  return ''
+}

@@ -1,0 +1,42 @@
+{{#if parameters/array}}
+import Schema from '@devitools/Agnostic/SchemaArray'
+{{else if parameters/builtin}}
+import Schema from '@devitools/Agnostic/SchemaBuiltin'
+{{else}}
+import Schema from '@devitools/Agnostic/Schema'
+
+import Service from './{{entity}}Service'
+{{/if}}
+import { domain } from '../settings'
+
+/**
+ * @class { {{entity}}Schema }
+ */
+export default class {{entity}}Schema extends Schema {
+  /**
+   * @type {string}
+   */
+  static domain = domain
+{{#unless parameters/array}}
+  {{#unless parameters/builtin}}
+
+  /**
+   * @type {Http}
+   */
+  service = Service
+  {{/unless}}
+{{/unless}}
+
+  /**
+   */
+  construct () {
+    this.addField('name')
+      .fieldIsInputPlan()
+      .fieldTableShow()
+      .fieldTableWhere()
+      .fieldFormAutofocus()
+      .fieldFormWidth(100)
+      .fieldFormFill('name')
+      .validationRequired()
+  }
+}

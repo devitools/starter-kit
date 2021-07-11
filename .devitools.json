@@ -1,0 +1,23 @@
+{
+  "lang": [
+    "pt-br"
+  ],
+  "template": "default",
+  "front": {
+    "type": "quasar",
+    "root": "/frontend",
+    "domains": "/source/domains",
+    "views": "/resources/views/dashboard",
+    "settings": "/src",
+    "routes": "/routes/dashboard",
+    "i18n": "/resources/lang"
+  },
+  "back": {
+    "type": "laravel",
+    "root": "/backend",
+    "domains": "/app/Domains",
+    "controllers": "/app/Http/Controllers",
+    "migrations": "/database/migrations",
+    "routes": "/routes/api"
+  }
+}

@@ -1,0 +1,103 @@
+version: '3.7'
+
+# Networks
+networks:
+  # Internal network
+  internal:
+    driver: bridge
+
+# Volumes
+volumes:
+  # MySQL volume
+  hellix-mysql_data:
+    driver: local
+  # Minio data
+  hellix-minio_data:
+    driver: local
+  # Minio config
+  hellix-minio_config:
+    driver: local
+
+services:
+  hellix-nginx:
+    image: webdevops/php-nginx-dev:7.4
+    container_name: hellix-nginx
+    networks:
+      - internal
+    depends_on:
+      - hellix-mysql
+    volumes:
+      - .:/var/www/app
+      - .docker/nginx/opt/docker/etc/nginx/vhost.common.d/cache.conf:/opt/docker/etc/nginx/vhost.common.d/cache.conf
+      - .docker/nginx/usr/local/etc/php/conf.d/php.ini:/usr/local/etc/php/conf.d/php.ini
+    working_dir: /var/www/app
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/app/public
+      - PHP_DISPLAY_ERRORS=0
+      - PHP_MEMORY_LIMIT=2048M
+      - PHP_MAX_EXECUTION_TIME=300
+      - PHP_POST_MAX_SIZE=500M
+      - PHP_UPLOAD_MAX_FILESIZE=500M
+      - PHP_DATE_TIMEZONE=UTC
+      - PHP_DEBUGGER="xdebug"
+      # xdebug v3
+      - XDEBUG_MODE=debug
+      - XDEBUG_START_WITH_REQUEST=yes
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_CLIENT_PORT=9090
+      - XDEBUG_OUTPUT_DIR=/var/www/hellix/.xdebug
+    ports:
+      - 8080:80
+
+  # MySQL
+  hellix-mysql:
+    image: mysql:5.7
+    container_name: hellix-mysql
+    networks:
+      - internal
+    working_dir: /var/www/hellix
+    volumes:
+      - hellix-mysql_data:/var/lib/mysql
+      - .:/var/www/hellix
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306:3306
+
+  # Node
+  hellix-node:
+    image: node:12
+    container_name: hellix-node
+    networks:
+      - internal
+    volumes:
+      - .:/var/www/app
+    working_dir: /var/www/app
+    command: bash -c "cd socket && yarn && node server"
+    ports:
+      - 3000:80
+
+  # Minio
+  hellix-minio:
+    image: minio/minio:RELEASE.2021-05-22T02-34-39Z
+    container_name: hellix-minio
+    entrypoint: sh
+    command: -c 'mkdir -p /data/static && minio server /data'
+    networks:
+      - internal
+    volumes:
+      - hellix-minio_data:/data
+      - hellix-minio_config:/root/.minio
+    ports:
+      - 8090:9000
+    environment:
+      - MINIO_ROOT_USER=s20B73VI0E0164ABPXZIH
+      - MINIO_ROOT_PASSWORD=M5mTytfy7U4xsxUitNWVJjC0AvV3FwXvXZQmYXab
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
