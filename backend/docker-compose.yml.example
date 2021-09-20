@@ -104,7 +104,7 @@ services:
 
   # Min.io
   replace.app.short-minio:
-    image: minio/minio:RELEASE.2021-05-22T02-34-39Z
+    image: minio/minio:RELEASE.2021-08-05T22-01-19Z
     container_name: replace.app.short-minio
     entrypoint: sh
     command: -c 'mkdir -p /data/static && minio server /data'
